@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 // import midi from 'midi';
 import Tone  from 'tone';
+import { Scale, Chord } from "tonal";
 
 // var now = Transport.now()
 // // Transport.bpm.setValueAtTime(100, now);
@@ -10,32 +11,26 @@ import Tone  from 'tone';
 // Transport.bpm.timeToTicks(6, now).toBarsBeatsSixteenths()
 
 var synth = new Tone.PolySynth(6, Tone.Synth).toMaster();
-var synth2 = new Tone.PolySynth(6, Tone.Synth).toMaster();
-var synth3 = new Tone.PolySynth(6, Tone.Synth).toMaster();
-var synth4 = new Tone.PolySynth(6, Tone.Synth).toMaster();
 
 
-const songObj = ["C3", ["C4", "C5"], ["G4", "D6"]];
+console.log(Chord.notes("BbMaj"))
+const chordNotes = Chord.notes("Bbm").map(note => `${note}4`);
 const time = "4n";
 
-var seq = new Tone.Sequence( (time, note) => {
-    synth.triggerAttackRelease(note, "8n", time);
-}, songObj, time);
+var chord = new Tone.Event(function(time, chord){
+	//the chord as well as the exact time of the event
+  //are passed in as arguments to the callback function
+      // synth.triggerAttackRelease(chord, "4n");
+}, chordNotes);
+//start the chord at the beginning of the transport timeline
+chord.start();
+//loop it every measure for 8 measures
+chord.loop = 8;
+chord.loopEnd = "1m";
 
-const songObj2 = ["G4", "G4"];
-const time2 = "4n";
-
-var seq2 = new Tone.Sequence( (time, note) => {
-    synth2.triggerAttackRelease(note, "4n", time);
-}, songObj2, time2);
-
-const songObj3 = ["E5", "E5"];
-const time3 = "4n";
-
-var seq3 = new Tone.Sequence( (time, note) => {
-    synth3.triggerAttackRelease(note, "4n", time);
-}, songObj3, time3);
-
+// var seq = new Tone.Sequence( (time, note) => {
+//     synth.triggerAttackRelease(note, "8n", time);
+// }, songObj, time);
 
 // const progressionGenerator()
 
