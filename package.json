@@ -5,7 +5,10 @@
   "dependencies": {
     "ramda": "^0.26.0",
     "react": "^16.6.3",
-    "react-dom": "^16.6.3"
+    "react-dom": "^16.6.3",
+    "scribbletune": "^1.9.2",
+    "tonal": "^2.1.2",
+    "tone": "^0.12.80"
   },
   "devDependencies": {
     "react-scripts": "2.1.1"
