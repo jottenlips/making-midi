@@ -32,15 +32,15 @@ const measureLengths = (song) => (song.map((accumulator) => {
     })
 );
 
-const measureMarkers = (measureLengths) => [0,
+const measureMarkers = (measureLengths) => [Tone.now(),
   ...(measureLengths.reduce((arr, current, index) =>
     (arr.push((index && arr[index - 1] || 0) + current), arr), []))];
 
 const generateChordSequence = (song, markers) => {
   song.map((chord, index) => {
+    console.log(chord)
     chord.notes.map(note => {
       const event = new Tone.Event(function(time, pitch) {
-        console.log(note)
         synth.triggerAttackRelease(pitch, `${chord.rate}n`, time);
       }, `${note}4`)
       event.start(`${markers[index]}m`);
