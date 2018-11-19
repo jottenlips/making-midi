@@ -1,7 +1,9 @@
 import Tone  from 'tone';
 // import { Chord } from "tonal";
+var chorus = new Tone.Chorus(4, 2.5, 0.5);
+var pingPong = new Tone.PingPongDelay("16n", 0.2).toMaster();
 
-const synth = new Tone.PolySynth(6, Tone.Synth).toMaster();
+const synth = new Tone.PolySynth(6, Tone.Synth).toMaster().connect(pingPong).connect(chorus);
 
 const chordEngine = (song) => {
   const lengths = measureLengths(song);
@@ -24,10 +26,10 @@ const measureMarkers = (measureLengths) =>
 const generateChordSequence = (song, markers) => {
   song.map((chord, index) => {
     console.log(chord)
-    chord.notes.map((note, jindex)=> {
+    chord.notes.map((note, jindex) => {
       const event = new Tone.Event(function(time, pitch) {
         synth.triggerAttackRelease(pitch, `${chord.rate}n`, time);
-      }, `${note}${3+jindex%2}`)
+      }, `${note}${chord.octave+jindex%2}`)
       event.start(`${markers[index]}m`);
       event.stop(`${markers[index]+chord.measureLength}m`);
       event.set({

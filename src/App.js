@@ -4,7 +4,31 @@ import chordEngine from './util/chordEngine';
 import './App.css';
 import { Chord } from "tonal";
 
-const song = [{notes:Chord.notes("Am"), octave:4, measureLength:1, rate:4}, 
+const chords = [{notes:Chord.notes("Am"), octave:4, measureLength:1, rate:4}, 
+{notes:Chord.notes("D7b9"), octave:4, measureLength:1, rate:4}, 
+{notes:Chord.notes("GM"), octave:4, measureLength:1, rate:4},
+{notes:Chord.notes("Gm"), octave:4, measureLength:1, rate:4},
+{notes:Chord.notes("C7"), octave:4, measureLength:1, rate:4},
+{notes:Chord.notes("FM"), octave:4, measureLength:1, rate:4},
+{notes:Chord.notes("Fm"), octave:4, measureLength:1, rate:4},{notes:Chord.notes("Am"), octave:4, measureLength:1, rate:4}, 
+{notes:Chord.notes("D7b9"), octave:4, measureLength:1, rate:4}, 
+{notes:Chord.notes("GM"), octave:4, measureLength:1, rate:4},
+{notes:Chord.notes("Gm"), octave:4, measureLength:1, rate:4},
+{notes:Chord.notes("C7"), octave:4, measureLength:1, rate:4},
+{notes:Chord.notes("FM"), octave:4, measureLength:1, rate:4},
+{notes:Chord.notes("Fm"), octave:4, measureLength:1, rate:4},{notes:Chord.notes("Am"), octave:4, measureLength:1, rate:4}, 
+{notes:Chord.notes("D7b9"), octave:4, measureLength:1, rate:4}, 
+{notes:Chord.notes("GM"), octave:4, measureLength:1, rate:4},
+{notes:Chord.notes("Gm"), octave:4, measureLength:1, rate:4},
+{notes:Chord.notes("C7"), octave:4, measureLength:1, rate:4},
+{notes:Chord.notes("FM"), octave:4, measureLength:1, rate:4},
+{notes:Chord.notes("Fm"), octave:4, measureLength:1, rate:4},{notes:Chord.notes("Am"), octave:4, measureLength:1, rate:4}, 
+{notes:Chord.notes("D7b9"), octave:4, measureLength:1, rate:4}, 
+{notes:Chord.notes("GM"), octave:4, measureLength:1, rate:4},
+{notes:Chord.notes("Gm"), octave:4, measureLength:1, rate:4},
+{notes:Chord.notes("C7"), octave:4, measureLength:1, rate:4},
+{notes:Chord.notes("FM"), octave:4, measureLength:1, rate:4},
+{notes:Chord.notes("Fm"), octave:4, measureLength:1, rate:4},{notes:Chord.notes("Am"), octave:4, measureLength:1, rate:4}, 
 {notes:Chord.notes("D7b9"), octave:4, measureLength:1, rate:4}, 
 {notes:Chord.notes("GM"), octave:4, measureLength:1, rate:4},
 {notes:Chord.notes("Gm"), octave:4, measureLength:1, rate:4},
@@ -12,7 +36,7 @@ const song = [{notes:Chord.notes("Am"), octave:4, measureLength:1, rate:4},
 {notes:Chord.notes("FM"), octave:4, measureLength:1, rate:4},
 {notes:Chord.notes("Fm"), octave:4, measureLength:1, rate:4}];
 
-chordEngine(song)
+chordEngine(chords)
 
 class App extends Component {
   render() {
@@ -22,15 +46,10 @@ class App extends Component {
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <p>
-            Edit <code>src/App.js</code> and save to reload.
+            {chords.map(chord => 
+              chord.notes)} 
           </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-          </a>
+
         </header>
       </div>
     );
