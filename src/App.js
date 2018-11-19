@@ -11,12 +11,12 @@ const chordForOctave = (chord, octave) => {
 }
 const synth = new Tone.PolySynth(6, Tone.Synth).toMaster();
 
-const song = [{notes:Chord.notes("Bbm"), octave:4, measureLength:2, rate:4, index:0}, 
-{notes:Chord.notes("BbM"), octave:4, measureLength:4, rate:4}, 
-{notes:Chord.notes("BbM"), octave:4, measureLength:4, rate:4},
-{notes:Chord.notes("AM"), octave:4, measureLength:4, rate:4},
-{notes:Chord.notes("Am"), octave:4, measureLength:4, rate:4},
-{notes:Chord.notes("BbM"), octave:4, measureLength:4, rate:4}];
+const song = [{notes:Chord.notes("Bbm"), octave:4, measureLength:1, rate:8, index:0}, 
+{notes:Chord.notes("BbM"), octave:4, measureLength:1, rate:8}, 
+{notes:Chord.notes("Bbm"), octave:4, measureLength:1, rate:8},
+{notes:Chord.notes("AM"), octave:4, measureLength:1, rate:8},
+{notes:Chord.notes("Am"), octave:4, measureLength:1, rate:8},
+{notes:Chord.notes("BbM"), octave:4, measureLength:1, rate:8}];
 
 const parseSong = (song) => {
   const lengths = measureLengths(song);
@@ -41,7 +41,7 @@ const generateChordSequence = (song, markers) => {
     chord.notes.map(note => {
       const event = new Tone.Event(function(time, pitch) {
         console.log(note)
-        synth.triggerAttackRelease(pitch, "4n", time);
+        synth.triggerAttackRelease(pitch, `${chord.rate}n`, time);
       }, `${note}4`)
       event.start(`${markers[index]}m`);
       event.stop(`${markers[index]+chord.measureLength}m`);
