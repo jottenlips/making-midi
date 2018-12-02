@@ -37,15 +37,12 @@ const chords = [{notes:Chord.notes("Am"), octave:4, measureLength:1, rate:4},
 {notes:Chord.notes("FM"), octave:4, measureLength:1, rate:4},
 {notes:Chord.notes("Fm"), octave:4, measureLength:1, rate:4}];
 
-console.log(Tone.tick)
+// const song_unparsed = `F#M | F#m | B7 B7b9 | E`
 
 chordEngine(chords)
 
 class App extends Component {
   render() {
-
-
-
     return (
       <div className="App">
         <header className="App-header">
@@ -54,8 +51,6 @@ class App extends Component {
             {chords.map(chord => 
              (<p> {chord.notes}  </p>))} 
           </p>
-          {Tone.Transport.tick}
-
         </header>
       </div>
     );
