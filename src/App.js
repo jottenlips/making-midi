@@ -5,14 +5,14 @@ import { parseSong } from './util/songParser';
 import './App.css';
 import * as tonal from "tonal";
 
-const song_unparsed = `AM | Am | Dm DM `
+const song_unparsed = `D7b9 | D13 | C6 | Co Dbm`
 
-const song = parseSong(song_unparsed, 4);
+const song = parseSong(song_unparsed, 3);
 console.log(song)
 // need to figure out how to split measures.
 const chords = song.flatMap(chord => chord);
 console.log(chords);
-chordEngine(chords);
+chordEngine(chords, 700);
 
 const App = () =>  {
     return (

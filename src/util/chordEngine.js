@@ -2,14 +2,15 @@ import Tone  from 'tone';
 // import { Chord } from "tonal";
 var chorus = new Tone.Chorus(4, 2.5, 0.5);
 var pingPong = new Tone.PingPongDelay("16n", 0.2).toMaster();
-
 const synth = new Tone.PolySynth(6, Tone.Synth).toMaster()
 // .connect(pingPong).connect(chorus);
 const now = Tone.now;
-const chordEngine = (song) => {
+const chordEngine = (song, bpm) => {
+  Tone.Transport.bpm.value = bpm || 120;
   const lengths = measureLengths(song);
   console.log(lengths, 'LENGTHS')
-  const markers = [1, ...measureMarkers(lengths).map(val => val + 1)];
+  const markers = [4, ...measureMarkers(lengths).map(val => val + 4)];
+  console.log(now, "TONE NOW")
   console.log('markers', markers)
   generateChordSequence(song, markers);
   Tone.Transport.start();
