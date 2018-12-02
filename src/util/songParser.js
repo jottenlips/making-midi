@@ -1,15 +1,19 @@
-const song_unparsed = `AM | D7b9 | EM | A7 Dm`
+import * as tonal from "tonal";
+
 // =>
 // =>
 // const chords = [{notes:Chord.notes("Am"), octave:4, measureLength:1, rate:4}, 
 // {notes:Chord.notes("D7b9"), octave:4, measureLength:1, rate:4}]
 
 
-const parseSong = (rawChords, octave) => {
+export const parseSong = (rawChords, octave) => {
     const measures = rawChords.split('|');
     // console.log(measures);
     const chords = parseChords(measures);
     console.log(chords)
+    const song = appendProgressionDetails(chords, octave);
+    console.log(song);
+    return song;
 }
 
 const parseChords = (measures) => {
@@ -19,4 +23,13 @@ const parseChords = (measures) => {
             .filter(chord => chord.length > 0));
 }
 
-parseSong(song_unparsed, 4);
+const appendProgressionDetails = (chords, octave) => {
+    return chords.map(measure => measure.map( chord => ({
+            notes:tonal.Chord.notes(chord),
+            octave,
+            measureLength: 1,
+            rate:4
+        }))
+    );
+};
+
