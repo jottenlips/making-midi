@@ -12,6 +12,8 @@ export const parseSong = (rawChords, octave) => {
     console.log(chords)
     const song = appendProgressionDetails(chords, octave);
     console.log(song);
+    console.log(tonal.Chord.names(), "ALL CHORDS")
+
     return song;
 }
 
@@ -26,6 +28,7 @@ const appendProgressionDetails = (chords, octave) => {
     return chords.map(measure => measure.map( chord => ({
             notes:tonal.Chord.notes(chord),
             octave,
+            chord,
             measureLength: (measure.length > 1) ? 1 : 2,
             // measureLength: 2,
             // rate: (measure.length > 1) ? 1 : 2

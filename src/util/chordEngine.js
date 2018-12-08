@@ -1,10 +1,9 @@
 import Tone  from 'tone';
-// import { Chord } from "tonal";
 var chorus = new Tone.Chorus(4, 2.5, 0.5);
 var pingPong = new Tone.PingPongDelay("16n", 0.2).toMaster();
 const synth = new Tone.PolySynth(6, Tone.Synth).toMaster()
-// .connect(pingPong).connect(chorus);
 const now = Tone.now;
+
 const chordEngine = (song, bpm) => {
   Tone.Transport.bpm.value = bpm || 120;
   const lengths = measureLengths(song);
@@ -25,8 +24,6 @@ const measureMarkers = (measureLengths) =>
   (measureLengths.reduce((arr, current, index) =>
     (arr.push((index && arr[index - 1] || 0) + current), arr), []));
 
-// [2,4,5,6]
-// const newMarkers =  [2, 4, 6, 7] need to make markers output this
 const generateChordSequence = (song, markers) => {
   song.map((chord, index) => {
     console.log(chord)
@@ -36,7 +33,6 @@ const generateChordSequence = (song, markers) => {
       }, `${note}${chord.octave+jindex%2}`)
       event.start(`${markers[index]}m`);
       console.log(markers, 'MARKERS');
-      // console.log(measureLengths, 'LENGTHS')
       event.stop(`${markers[index]+chord.measureLength}m`);
       event.set({
         "loop" : true,
