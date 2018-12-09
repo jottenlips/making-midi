@@ -15,23 +15,32 @@ const handleSubmit = (event, props) => {
         // turn into util resetTransport.js
         Object.keys(Tone.Transport._scheduledEvents).map(eventId => Tone.Transport.clear(eventId));
     }
+    const textChords = document.getElementById("myTextarea").value
     event.preventDefault();
-    const song = parseSong(props.chords, 4);
+    // const song = parseSong(props.chords, 4);
+    const song = parseSong(textChords, 4);
     const chords = song.flatMap(chord => chord);
-    chordEngine(chords, 700);
+    chordEngine(chords, 240);
 }   
  
 const ChordInput = props => {
     let chordInput;
     return (
+    <div>
+  
       <form onSubmit={(e) => {handleSubmit(e, props)}}>
-        <input type="text" 
+      <textarea id="myTextarea">
+        </textarea>
+        {/* <input type="textArea" 
+        width="100" height="100"
           ref={(chord) => chordInput = chord}
-          placeholder="chords" 
+          placeholder="EbM7 | EbM7 | Ebm7 | Ebm7 | Ab7 | Fm7 | Fm7 | Abm7 | Db7 | Gm7 | F#m7 B7 | Fm7 |Bb7 | Gm7 | F#m7 B7 | Fm7 | Bb7" 
           onChange={(e) => {handleChange(e, props)}}
           />
-        <input type="submit" value="Play" />
+         */}
+         <input type="submit" value="Play" />
       </form>
+      </div>
     );
 }
 
