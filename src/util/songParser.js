@@ -7,13 +7,8 @@ import * as tonal from "tonal";
 
 export const parseSong = (rawChords, octave) => {
     const measures = rawChords.split('|');
-    // console.log(measures);
     const chords = parseChords(measures);
-    console.log(chords)
     const song = appendProgressionDetails(chords, octave);
-    console.log(song);
-    console.log(tonal.Chord.names(), "ALL CHORDS")
-
     return song;
 }
 
