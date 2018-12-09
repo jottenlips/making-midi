@@ -9,17 +9,12 @@ const handleChange = (event, props) => {
 }
 
 const handleSubmit = (event, props) => {
-    // Tone.context.close();
     Tone.Transport.seconds = 0;
     console.log(Tone.Transport)
     if (Tone.Transport._scheduledEvents) {
+        // turn into util resetTransport.js
         Object.keys(Tone.Transport._scheduledEvents).map(eventId => Tone.Transport.clear(eventId));
-        // Tone.Transport.events.map(event => console.log(event.id))
-        // Tone.Transport.events.map(event => Tone.Transport.clear(event.id))
     }
-
-    // Tone.context = new AudioContext();
-    // if (Tone.transport) { console.log("STAHHP"); Tone.transport.stop(); }
     event.preventDefault();
     const song = parseSong(props.chords, 4);
     const chords = song.flatMap(chord => chord);
