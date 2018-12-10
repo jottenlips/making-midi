@@ -16,10 +16,9 @@ const handleSubmit = (event, props) => {
         // turn into util resetTransport.js
         Object.keys(Tone.Transport._scheduledEvents).map(eventId => Tone.Transport.clear(eventId));
     }
-    const textChords = document.getElementById("myTextarea").value
+    props.setChords(document.getElementById("myTextarea").value)
     event.preventDefault();
-    // const song = parseSong(props.chords, 4);
-    const song = parseSong(textChords, 4);
+    const song = parseSong(props.chords, 4);
     const chords = song.flatMap(chord => chord);
     chordEngine(chords, 240);
 }   
