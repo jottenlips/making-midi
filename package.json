@@ -10,7 +10,9 @@
     "recompose": "^0.30.0",
     "scribbletune": "^1.9.2",
     "tonal": "^2.1.2",
-    "tone": "^0.12.80"
+    "tone": "^0.12.80",
+    "react-scripts": "2.1.1"
+
   },
   "devDependencies": {
     "react-scripts": "2.1.1"
