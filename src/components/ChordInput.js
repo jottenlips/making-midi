@@ -3,6 +3,7 @@ import chordEngine from '../util/chordEngine';
 import { parseSong } from '../util/songParser';
 import { compose, withState } from 'recompose';
 import Tone from 'tone';
+import './chordInput.css';
 
 const handleChange = (event, props) => {
     props.setChords(event.target.value);
@@ -29,7 +30,7 @@ const ChordInput = props => {
     <div>
   
       <form onSubmit={(e) => {handleSubmit(e, props)}}>
-      <textarea id="myTextarea">
+      <textarea id="myTextarea" >
         </textarea>
         {/* <input type="textArea" 
         width="100" height="100"

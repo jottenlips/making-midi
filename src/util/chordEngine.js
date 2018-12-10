@@ -1,7 +1,21 @@
 import Tone  from 'tone';
 var chorus = new Tone.Chorus(4, 2.5, 0.5);
-var pingPong = new Tone.PingPongDelay("16n", 0.2).toMaster();
-const synth = new Tone.PolySynth(6, Tone.Synth).toMaster()
+var pingPong = new Tone.PingPongDelay("128n", 0.2).toMaster();
+
+// var fmSynth = new Tone.FMSynth(
+  
+// ).toMaster();
+
+// const sampler = new Tone.Sampler({
+// 	"C3" : "casioC2.wav",
+// }, {
+//   'baseUrl': '../samples/', 
+//   onload: () => sampler.triggerAttack("C3")
+// }).toMaster()
+
+const synth = new Tone.PolySynth(6, Tone.MonoSynth).toMaster().connect(chorus)
+
+
 
 const chordEngine = (song, bpm) => {
   const now = Math.ceil(Tone.now()*10);

@@ -1,0 +1,11 @@
+
+@font-face {
+    font-family: Boogaloo-Regular;
+    src: url(../Boogaloo/Boogaloo-Regular.ttf);
+    font-weight: bold;
+}
+
+textarea {
+    font-size: 64pt;
+    font-family: Boogaloo-Regular;
+}

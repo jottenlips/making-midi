@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "midi-sounds-react": "^1.2.54",
     "ramda": "^0.26.0",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
