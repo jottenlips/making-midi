@@ -10,16 +10,15 @@ export const parseSong = (rawChords, octave) => {
 const parseChords = (measures) => {
     return measures
         .map(measure => measure.split(' '))
-        .map(measure => measure
-            .filter(chord => chord.length > 0));
+        .map(measure => measure.filter(chord => chord.length > 0));
 }
 
 const appendProgressionDetails = (chords, octave) => {
     return chords.map(measure => measure.map(chord => ({
-            notes: tonal.Chord.notes(chord),
+            notes: tonal.Chord.notes(chord).map(note => `${note}${octave}`),
             octave,
             chord,
-            duration: (measure.length > 1) ? 2 : 4
+            duration: (measure.length > 1) ? `2` : `1`
         }))
     );
 };
