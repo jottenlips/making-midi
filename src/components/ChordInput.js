@@ -4,9 +4,9 @@ import { compose, withState } from 'recompose';
 import './chordInput.css';
 import { composeMidiFile } from '../util/composeMidiFile';
 import { flatten } from 'ramda';
-import { playMidiDataUri } from '../util/playMidiDataUri';
+import { playMidi } from '../util/playMidi';
 
-const handleSubmit = (event, props) => {
+const handleSubmit = async (event, props) => {
     event.preventDefault();
     const allChords = document.getElementById("myTextarea").value
     console.log(allChords, 'ALL CHORDS')
@@ -15,7 +15,7 @@ const handleSubmit = (event, props) => {
     const midiDataUri = composeMidiFile(chords, 120)
     console.log(chords, 'CHORDS')
     console.log(midiDataUri, 'MIDI');
-    playMidiDataUri(midiDataUri);
+    playMidi(midiDataUri);
 }   
  
 const ChordInput = props => {

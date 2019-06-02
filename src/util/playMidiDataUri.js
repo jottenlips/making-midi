@@ -1,8 +1,11 @@
 // Initialize player and register event handler
 const MidiPlayer = require('midi-player-js');
-const Player = new MidiPlayer.Player();
 
 export const playMidiDataUri = (data) => {
-    Player.loadDataUri(data);
+    const Player = new MidiPlayer.Player(function(event) {
+        console.log(event);
+    });    
+    Player.loadFile(data);
+    Player.reset();
     Player.play();
 }
