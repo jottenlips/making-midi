@@ -24,7 +24,7 @@ const handleSubmit = (event, props) => {
 }   
  
 const ChordInput = props => {
-    let chordInput;
+    // let chordInput;
     return (
     <div>
   
@@ -36,9 +36,9 @@ const ChordInput = props => {
           ref={(chord) => chordInput = chord}
           placeholder="EbM7 | EbM7 | Ebm7 | Ebm7 | Ab7 | Fm7 | Fm7 | Abm7 | Db7 | Gm7 | F#m7 B7 | Fm7 |Bb7 | Gm7 | F#m7 B7 | Fm7 | Bb7" 
           onChange={(e) => {handleChange(e, props)}}
-          />
-         */}
-         <input type="submit" value="Play" />
+          /> */}
+        
+         <input type="submit" value="Play" onChange={(e) => {handleChange(e, props)}}/>
       </form>
       </div>
     );
