@@ -3,16 +3,17 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "midi-player-js": "^2.0.5",
     "midi-sounds-react": "^1.2.54",
+    "midi-writer-js": "^1.7.1",
     "ramda": "^0.26.0",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
+    "react-scripts": "2.1.1",
     "recompose": "^0.30.0",
     "scribbletune": "^1.9.2",
     "tonal": "^2.1.2",
-    "tone": "^0.12.80",
-    "react-scripts": "2.1.1"
-
+    "tone": "^0.12.80"
   },
   "devDependencies": {
     "react-scripts": "2.1.1"
