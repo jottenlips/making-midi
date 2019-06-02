@@ -1,26 +1,25 @@
 import React from 'react';
-import chordEngine from '../util/chordEngine';
+// import chordEngine from '../util/chordEngine';
 import { parseSong } from '../util/songParser';
 import { compose, withState } from 'recompose';
 import Tone from 'tone';
 import './chordInput.css';
+import { composeMidiFile } from '../util/composeMidiFile';
+import { flatten } from 'ramda';
 
 const handleChange = (event, props) => {
     props.setChords(event.target.value);
 }
 
 const handleSubmit = (event, props) => {
-    Tone.Transport.seconds = 0;
-    console.log(Tone.Transport)
-    if (Tone.Transport._scheduledEvents) {
-        // turn into util resetTransport.js
-        Object.keys(Tone.Transport._scheduledEvents).map(eventId => Tone.Transport.clear(eventId));
-    }
-    props.setChords(document.getElementById("myTextarea").value)
     event.preventDefault();
-    const song = parseSong(props.chords, 4);
-    const chords = song.flatMap(chord => chord);
-    chordEngine(chords, 240);
+    const allChords = document.getElementById("myTextarea").value
+    console.log(allChords, 'ALL CHORDS')
+    props.setChords(allChords)
+    const chords = flatten(parseSong(allChords, 4));
+    const midiDataUri = composeMidiFile(chords, 120)
+    console.log(chords, 'CHORDS')
+    console.log(midiDataUri, 'MIDI');
 }   
  
 const ChordInput = props => {
@@ -38,7 +37,7 @@ const ChordInput = props => {
           onChange={(e) => {handleChange(e, props)}}
           /> */}
         
-         <input type="submit" value="Play" onChange={(e) => {handleChange(e, props)}}/>
+         <input type="submit" value="Play"/>
       </form>
       </div>
     );
