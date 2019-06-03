@@ -12,7 +12,7 @@ const handleSubmit = async (event, props) => {
     console.log(allChords, 'ALL CHORDS')
     props.setChords(allChords)
     const chords = flatten(parseSong(allChords, 4));
-    const midiDataUri = composeMidiFile(chords, 120)
+    const midiDataUri = composeMidiFile(chords, 240)
     console.log(chords, 'CHORDS')
     console.log(midiDataUri, 'MIDI');
     playMidi(midiDataUri);
