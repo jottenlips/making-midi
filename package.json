@@ -11,7 +11,6 @@
     "react-dom": "^16.6.3",
     "react-scripts": "2.1.1",
     "recompose": "^0.30.0",
-    "scribbletune": "^1.9.4",
     "soundfont-player": "^0.11.0",
     "tonal": "^2.1.2"
   },

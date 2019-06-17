@@ -1,20 +1,20 @@
 const MidiPlayer = require('midi-player-js');
-const Soundfont = require('sounfont-player');
-var ac = new AudioContext()
+const Soundfont = require('soundfont-player');
+const ac = new AudioContext()
 
 export const playMidi = async (dataUri) => {
-   
-    var Player = new MidiPlayer.Player(function(event) {
-        Soundfont.instrument(ac, 
-            'https://raw.githubusercontent.com/gleitz/midi-js-soundfonts/gh-pages/MusyngKite/acoustic_guitar_nylon-mp3.js')
-                .then((instrument) => {
-            if (event.name == 'Note on') {
-                instrument.play(event.noteName, ac.currentTime, {gain:event.velocity/100});
-            }
+    Soundfont.instrument(ac, 
+        'https://raw.githubusercontent.com/gleitz/midi-js-soundfonts/gh-pages/FatBoy/acoustic_grand_piano-mp3.js')
+        .then((instrument) => {
+        const Player = new MidiPlayer.Player(function(event) {
+            const time = ac.currentTime
+            console.log(event)
+            event.name === 'Note on' ? instrument.play(event.noteName, time, {gain:event.velocity/4}) : console.log(event);
         })
+        Player.loadDataUri(dataUri);
+        Player.play();
     });
-    Player.loadDataUri(dataUri);
-    Player.play();
+  
 }
 
 

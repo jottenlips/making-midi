@@ -13,9 +13,11 @@ const parseChords = (measures) => {
         .map(measure => measure.filter(chord => chord.length > 0));
 }
 
+const spreadOctave = (index) => index % 2 === 0 ? index -1 : 0
+
 const appendProgressionDetails = (chords, octave) => {
     return chords.map(measure => measure.map(chord => ({
-            notes: tonal.Chord.notes(chord).map(note => `${note}${octave}`),
+            notes: tonal.Chord.notes(chord).map((note, index) => `${note}${octave + spreadOctave(index)}`),
             octave,
             chord,
             duration: (measure.length > 1) ? `2` : `1`
