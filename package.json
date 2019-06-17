@@ -4,9 +4,7 @@
   "private": true,
   "dependencies": {
     "@tonejs/midi": "^2.0.0",
-    "jzz-midi-smf": "^1.2.4",
     "midi-player-js": "^2.0.5",
-    "midi-sounds-react": "^1.2.54",
     "midi-writer-js": "^1.7.1",
     "ramda": "^0.26.0",
     "react": "^16.6.3",
@@ -14,10 +12,8 @@
     "react-scripts": "2.1.1",
     "recompose": "^0.30.0",
     "scribbletune": "^1.9.4",
-    "timidity": "^1.0.1",
-    "tonal": "^2.1.2",
-    "tone": "^0.12.80",
-    "webaudiofont": "^2.5.47"
+    "soundfont-player": "^0.11.0",
+    "tonal": "^2.1.2"
   },
   "devDependencies": {
     "react-scripts": "2.1.1"
