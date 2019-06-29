@@ -6,25 +6,21 @@ import { composeMidiFile } from '../util/composeMidiFile';
 import { flatten } from 'ramda';
 import { playMidi } from '../util/playMidi';
 
-const handleSubmit = async (event, props) => {
+const handleSubmit = curry((event, props) => {
     event.preventDefault();
-    const allChords = document.getElementById("myTextarea").value
-    console.log(allChords, 'ALL CHORDS')
+    const allChords = document.getElementById("chordInput").value
     props.setChords(allChords)
     const chords = flatten(parseSong(allChords, 4));
     const midiDataUri = composeMidiFile(chords, 240)
-    console.log(chords, 'CHORDS')
-    console.log(midiDataUri, 'MIDI');
     playMidi(midiDataUri);
-}   
+})
  
 const ChordInput = props => {
     return (
     <div>
-      <form onSubmit={(e) => {handleSubmit(e, props)}}>
-      <textarea id="myTextarea" >
-        </textarea>
-         <input type="submit" value="Play"/>
+      <form onSubmit={handleSubmit(props)}>
+      <textarea id="chordInput" />
+        <input type="submit" value="Play"/>
       </form>
       </div>
     );
