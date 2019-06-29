@@ -15,16 +15,14 @@ const handleSubmit = curry((event, props) => {
     playMidi(midiDataUri);
 })
  
-const ChordInput = props => {
-    return (
+const ChordInput = props => (
     <div>
       <form onSubmit={handleSubmit(props)}>
       <textarea id="chordInput" />
         <input type="submit" value="Play"/>
       </form>
       </div>
-    );
-}
+)
 
 export default compose(
     withState('chords', 'setChords', "")
