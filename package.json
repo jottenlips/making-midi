@@ -12,6 +12,7 @@
     "react-scripts": "2.1.1",
     "recompose": "^0.30.0",
     "soundfont-player": "^0.11.0",
+    "styled-components": "^5.0.1",
     "tonal": "^2.1.2"
   },
   "devDependencies": {

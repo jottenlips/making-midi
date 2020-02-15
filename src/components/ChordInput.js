@@ -17,7 +17,7 @@ const handleSubmit = (event, setChords) => {
 const ChordInput = props => {
   const [chords, setChords] = useState("");
   return (
-    <div>
+    <>
       <form onSubmit={e => handleSubmit(e, setChords)}>
         <textarea
           id="chordInput"
@@ -26,7 +26,7 @@ const ChordInput = props => {
         />
         <input type="submit" value="Play" />
       </form>
-    </div>
+    </>
   );
 };
 
