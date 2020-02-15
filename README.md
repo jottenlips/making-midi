@@ -3,12 +3,11 @@
 ## App 1
 
 - Jazz fakebook MIDI player
-- Jazz Solo?
 
 ## App 2
 
-- Midi controlled light show
+- Midi controlled display
 
 ## App 3
 
-- Midi chat room
+- Control a synthesizer with midi
