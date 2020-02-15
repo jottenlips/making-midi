@@ -8,7 +8,7 @@ export const withMidiOutput = Cmp => props => {
     console.log(WebMidi.inputs);
     console.log(WebMidi.outputs);
     const midiInputId = WebMidi.outputs[0]._midiOutput.id;
-    const output = WebMidi.getOutputById(midiInputId);
+    const output = WebMidi.getOutputById("1295864820");
     setMidiOut(output);
   });
 

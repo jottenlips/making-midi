@@ -10,7 +10,7 @@ export const withMidiIn = Cmp => props => {
   WebMidi.enable(() => {
     console.log(WebMidi.inputs);
     console.log(WebMidi.outputs);
-    const midiInputId = WebMidi.inputs[0]._midiInput.id;
+    const midiInputId = WebMidi.inputs[1]._midiInput.id;
     const input = WebMidi.getInputById(midiInputId);
     input.addListener("noteon", "all", e => {
       console.log(
