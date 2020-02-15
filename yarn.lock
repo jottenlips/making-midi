@@ -5691,11 +5691,6 @@ jsesc@~0.5.0:
   resolved "https://registry.yarnpkg.com/jsesc/-/jsesc-0.5.0.tgz#e7dee66e35d6fc16f710fe91d5cf69f70f08911d"
   integrity sha1-597mbjXW/Bb3EP6R1c9p9w8IkR0=
 
-jsmidgen@~0.1.4:
-  version "0.1.5"
-  resolved "https://registry.yarnpkg.com/jsmidgen/-/jsmidgen-0.1.5.tgz#ad0afd6375eb12f51064025393ce3baec380585d"
-  integrity sha1-rQr9Y3XrEvUQZAJTk847rsOAWF0=
-
 json-parse-better-errors@^1.0.1, json-parse-better-errors@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/json-parse-better-errors/-/json-parse-better-errors-1.0.2.tgz#bb867cfb3450e69107c131d1c514bab3dc8bcaa9"
@@ -8673,14 +8668,6 @@ schema-utils@^1.0.0:
     ajv-errors "^1.0.0"
     ajv-keywords "^3.1.0"
 
-scribbletune@^1.9.4:
-  version "1.9.4"
-  resolved "https://registry.yarnpkg.com/scribbletune/-/scribbletune-1.9.4.tgz#b1df03859e9c23d443924a0b7c77719e92981ef9"
-  integrity sha512-cd+gQ1gLS3riowadz2TOfdQgDvg83gUaCb2H1Z0xPVXs/ZDeJ5qHK6INc18xjm3Nh3eHg2Y0y80GFGPVSRRTYg==
-  dependencies:
-    jsmidgen "~0.1.4"
-    tonal "^2.0.0"
-
 select-hose@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/select-hose/-/select-hose-2.0.0.tgz#625d8658f865af43ec962bfc376a37359a4994ca"
@@ -9549,7 +9536,7 @@ tonal-scale@^2.2.2:
     tonal-note "^2.2.2"
     tonal-pcset "^2.2.2"
 
-tonal@^2.0.0, tonal@^2.1.2:
+tonal@^2.1.2:
   version "2.2.2"
   resolved "https://registry.yarnpkg.com/tonal/-/tonal-2.2.2.tgz#dc8aabf9f981c8b74c4590e4b3ed662176705e8a"
   integrity sha512-Ze2bQc6KhAf3FKM9HzEsQ4z8hZh4WYCOsCrryONqf/THGOrOpL9Cc8Uc0dq0OA2yK2JbD5FhZckEXNYyD9946A==
