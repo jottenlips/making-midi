@@ -1,6 +1,6 @@
 import React from "react";
 
-import { withMidi } from "../util/withMidi";
+import { withMidiInput } from "../util/withMidiInput";
 
 const MidiDisplay = props => {
   return (
@@ -10,4 +10,4 @@ const MidiDisplay = props => {
   );
 };
 
-export const MidiIn = withMidi(MidiDisplay);
+export const MidiIn = withMidiInput(MidiDisplay);

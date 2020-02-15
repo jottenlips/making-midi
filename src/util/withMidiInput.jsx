@@ -20,6 +20,7 @@ export const withMidiIn = Cmp => props => {
       setNoteEvent(note);
       props.synth.triggerAttackRelease(note, 1.5);
     });
+    input.removeListener("noteoff");
   });
 
   return (
@@ -29,4 +30,4 @@ export const withMidiIn = Cmp => props => {
   );
 };
 
-export const withMidi = compose(withSynth, withMidiIn);
+export const withMidiInput = compose(withSynth, withMidiIn);

@@ -17,8 +17,11 @@ export const withSynth = Cmp => props => {
       release: 0.1
     }
   }).toMaster();
+
+  const fmSynth = new Tone.FMSynth().toMaster();
+
   return (
-    <Cmp synth={synth} {...props}>
+    <Cmp synth={synth} fmSynth={fmSynth} {...props}>
       {props.children}
     </Cmp>
   );

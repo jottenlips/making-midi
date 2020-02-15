@@ -1,6 +1,5 @@
 import React from "react";
 import "./App.css";
-import { withMidi } from "./util/withMidi";
 import { Routes } from "./Routes";
 
 const App = () => {
