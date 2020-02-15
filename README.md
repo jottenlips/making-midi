@@ -6,8 +6,8 @@
 
 ## App 2
 
-- Midi controlled display
+- MIDI controlled display
 
 ## App 3
 
-- Control a synthesizer with midi
+- Control a synthesizer with MIDI
