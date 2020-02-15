@@ -4,17 +4,21 @@
   "private": true,
   "dependencies": {
     "@tonejs/midi": "^2.0.0",
+    "@tonejs/ui": "^0.0.9",
     "midi-player-js": "^2.0.5",
     "midi-writer-js": "^1.7.1",
     "ramda": "^0.26.0",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
     "react-router": "^5.1.2",
+    "react-router-dom": "^5.1.2",
     "react-scripts": "2.1.1",
     "recompose": "^0.30.0",
     "soundfont-player": "^0.11.0",
     "styled-components": "^5.0.1",
-    "tonal": "^2.1.2"
+    "tonal": "^2.1.2",
+    "tone": "^13.8.25",
+    "webmidi": "^2.5.1"
   },
   "devDependencies": {
     "react-scripts": "2.1.1"

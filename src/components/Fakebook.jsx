@@ -1,33 +1,33 @@
 import React, { useState } from "react";
 import { parseSong } from "../util/songParser";
-import "./chordInput.css";
 import { composeMidiFile } from "../util/composeMidiFile";
-import { flatten, curry, compose } from "ramda";
+import { flatten } from "ramda";
 import { playMidi } from "../util/playMidi";
+import styled from "styled-components";
 
-const handleSubmit = (event, setChords) => {
+const handleSubmit = (event, setChords, allChords) => {
   event.preventDefault();
-  const allChords = document.getElementById("chordInput").value;
   setChords(allChords);
   const chords = flatten(parseSong(allChords, 4));
   const midiDataUri = composeMidiFile(chords, 240);
   playMidi(midiDataUri);
 };
 
-const ChordInput = props => {
+const Fakebook = props => {
   const [chords, setChords] = useState("");
   return (
-    <>
-      <form onSubmit={e => handleSubmit(e, setChords)}>
-        <textarea
-          id="chordInput"
-          value={chords}
-          onChange={e => setChords(e.target.value)}
-        />
+    <div>
+      <form onSubmit={e => handleSubmit(e, setChords, chords)}>
+        <JazzText value={chords} onChange={e => setChords(e.target.value)} />
         <input type="submit" value="Play" />
       </form>
-    </>
+    </div>
   );
 };
 
-export default ChordInput;
+const JazzText = styled.textarea`
+  font-size: 64pt;
+  font-family: Boogaloo-Regular;
+`;
+
+export default styled(Fakebook)``;
