@@ -4,7 +4,9 @@ import { composeMidiFile } from "../util/composeMidiFile";
 import { flatten } from "ramda";
 import { playMidiThroughOutput } from "../util/playMidi";
 import styled from "styled-components";
-import { withMidiOutput } from "../util/withMidiOutput";
+import { Box } from "./Box";
+import { ThreeDCanvas } from "./ThreeDCanvas";
+import { withMidi } from "../util/withMidi";
 
 const handleSubmit = (event, setChords, allChords, output) => {
   event.preventDefault();
@@ -23,6 +25,9 @@ const MidiOut = props => {
         <MidiText value={chords} onChange={e => setChords(e.target.value)} />
         <input type="submit" value="Play" />
       </form>
+      <ThreeDCanvas>
+        <Box midiOut={props.midiOut} />
+      </ThreeDCanvas>
     </div>
   );
 };
@@ -32,4 +37,4 @@ const MidiText = styled.textarea`
   font-family: Arial;
 `;
 
-export default withMidiOutput(MidiOut);
+export default withMidi(MidiOut);

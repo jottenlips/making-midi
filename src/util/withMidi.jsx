@@ -3,7 +3,7 @@ import WebMidi from "webmidi";
 import { withSynth } from "./withSynth";
 import { compose, path } from "ramda";
 
-export const withMidiIn = Cmp => props => {
+export const withWebMidi = Cmp => props => {
   const [noteEvent, setNoteEvent] = useState();
   const [midiOut, setMidiOut] = useState();
 
@@ -12,6 +12,9 @@ export const withMidiIn = Cmp => props => {
     console.log(WebMidi.outputs);
     const midiInputId = WebMidi.inputs[1]._midiInput.id;
     const input = WebMidi.getInputById(midiInputId);
+    const midiOutputId = WebMidi.outputs[0]._midiOutput.id;
+    const output = WebMidi.getOutputById("1295864820");
+    setMidiOut(output);
     input.addListener("noteon", "all", e => {
       console.log(
         "Received 'noteon' message (" + e.note.name + e.note.octave + ")."
@@ -24,10 +27,10 @@ export const withMidiIn = Cmp => props => {
   });
 
   return (
-    <Cmp noteEvent={noteEvent} {...props}>
+    <Cmp noteEvent={noteEvent} midiOut={midiOut} {...props}>
       {props.children}
     </Cmp>
   );
 };
 
-export const withMidiInput = compose(withSynth, withMidiIn);
+export const withMidi = compose(withSynth, withWebMidi);
