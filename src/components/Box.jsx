@@ -19,7 +19,7 @@ export const Box = props => {
 
   // Rotate mesh every frame, this is outside of React without overhead
   useFrame(() => (mesh.current.rotation.x = mesh.current.rotation.y += 0.01));
-  const rotationY = mesh.current ? mesh.current.rotation.y / 2 : 1;
+  const rotationY = mesh.current ? mesh.current.rotation.y / 3 : 1;
   return (
     <mesh
       {...props}
