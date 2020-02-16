@@ -24,11 +24,7 @@ export const Box = props => {
     <mesh
       {...props}
       ref={mesh}
-      scale={
-        active
-          ? [1.5, 1.5, 1.5]
-          : [1.5 * rotationY, 1.5 * rotationY, 1.5 * rotationY]
-      }
+      scale={active ? [1.5, 1.5, 1.5] : [1, 1, 1]}
       onClick={e => {
         setActive(!active);
         console.log(mesh.current.rotation.y);
@@ -43,7 +39,7 @@ export const Box = props => {
       <boxBufferGeometry attach="geometry" args={[1, 1, 1]} />
       <meshStandardMaterial
         attach="material"
-        color={hovered ? "hotpink" : "orange"}
+        color={hovered ? "#FFFF00" : "#FF00FF"}
       />
     </mesh>
   );
