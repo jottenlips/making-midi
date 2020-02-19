@@ -34,7 +34,8 @@ const Fakebook = props => {
 
 const JazzText = styled.textarea`
   font-size: 64pt;
-  font-family: Boogaloo-Regular;
 `;
+
+//   font-family: Boogaloo-Regular;
 
 export default styled(Fakebook)``;

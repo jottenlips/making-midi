@@ -9,7 +9,7 @@ import styled from "styled-components";
 
 export const Routes = props => {
   return (
-    <Router>
+    <Router basename={window.location.pathname || ""}>
       <div style={{ flexDirection: "row" }}>
         <SideNav>
           <div>

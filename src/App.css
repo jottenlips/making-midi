@@ -2,11 +2,11 @@
   text-align: center;
 }
 
-@font-face {
+/* @font-face {
   font-family: Boogaloo-Regular;
   src: url(./Boogaloo/Boogaloo-Regular.ttf);
   font-weight: bold;
-}
+} */
 
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
