@@ -5,27 +5,24 @@ import Fakebook from "./components/Fakebook";
 import { MidiIn } from "./components/MidiIn";
 import MidiOut from "./components/MidiOut";
 import { withMidi } from "./util/withMidi";
+import styled from "styled-components";
 
 export const Routes = props => {
   return (
     <Router>
-      <div>
-        <nav>
-          <ul>
-            <li>
-              <Link to="/fakebook">Fakebook</Link>
-            </li>
-            <li>
-              <Link to="/midi-in">midi-in</Link>
-            </li>
-            <li>
-              <Link to="/midi-out">midi-out</Link>
-            </li>
-            <li>
-              <Link to="/midi-chat">midi-chat</Link>
-            </li>
-          </ul>
-        </nav>
+      <div style={{ flexDirection: "row" }}>
+        <SideNav>
+          <div>
+            <Link to="/fakebook">Fakebook</Link>
+          </div>
+          <div>
+            <Link to="/midi-in">midi-in</Link>
+          </div>
+          <div>
+            <Link to="/midi-out">midi-out</Link>
+          </div>
+          {/* <Link to="/midi-chat">midi-chat</Link> */}
+        </SideNav>
         <Switch>
           <Route path="/fakebook">
             <Fakebook />
@@ -42,5 +39,16 @@ export const Routes = props => {
     </Router>
   );
 };
+
+const SideNav = styled.div`
+  height: 100%;
+  width: 50;
+  left: 0;
+  z-index: 20;
+  position: fixed;
+  flex: 1;
+  background-color: #ff00ff;
+  justify-content: left;
+`;
 
 export default withMidi(Routes);
