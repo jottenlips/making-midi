@@ -6,7 +6,6 @@ import { playMidiThroughOutput } from "../util/playMidi";
 import styled from "styled-components";
 import { Box } from "./Box";
 import { ThreeDCanvas } from "./ThreeDCanvas";
-import { withMidi } from "../util/withMidi";
 
 const handleSubmit = (event, setChords, allChords, output) => {
   event.preventDefault();
@@ -20,7 +19,14 @@ const MidiOut = props => {
   const [chords, setChords] = useState("");
   console.log(props);
   return (
-    <div>
+    <div
+      style={{
+        width: "100vh",
+        height: "100vh",
+        alignItems: "center",
+        paddingTop: 100
+      }}
+    >
       <form onSubmit={e => handleSubmit(e, setChords, chords, props.midiOut)}>
         <MidiText value={chords} onChange={e => setChords(e.target.value)} />
         <input type="submit" value="Play" />
@@ -37,4 +43,4 @@ const MidiText = styled.textarea`
   font-family: Arial;
 `;
 
-export default withMidi(MidiOut);
+export default MidiOut;

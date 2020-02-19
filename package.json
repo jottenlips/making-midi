@@ -1,5 +1,5 @@
 {
-  "name": "making-midi",
+  "name": "makingmidi",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -23,17 +23,21 @@
     "webmidi": "^2.5.1"
   },
   "devDependencies": {
+    "gh-pages": "^2.2.0",
     "react-scripts": "2.1.1"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "deploy": "yarn run build && gh-pages -d build",
+    "prod": "open https://jottenlips.github.io/making-midi/"
   },
   "eslintConfig": {
     "extends": "react-app"
   },
+  "homepage": "https://jottenlips.github.io/making-midi/",
   "browserslist": [
     ">0.2%",
     "not dead",

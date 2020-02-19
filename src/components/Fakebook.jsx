@@ -16,7 +16,14 @@ const handleSubmit = (event, setChords, allChords) => {
 const Fakebook = props => {
   const [chords, setChords] = useState("");
   return (
-    <div>
+    <div
+      style={{
+        width: "100vh",
+        height: "100vh",
+        alignItems: "center",
+        paddingTop: 100
+      }}
+    >
       <form onSubmit={e => handleSubmit(e, setChords, chords)}>
         <JazzText value={chords} onChange={e => setChords(e.target.value)} />
         <input type="submit" value="Play" />
@@ -27,7 +34,8 @@ const Fakebook = props => {
 
 const JazzText = styled.textarea`
   font-size: 64pt;
-  font-family: Boogaloo-Regular;
 `;
+
+//   font-family: Boogaloo-Regular;
 
 export default styled(Fakebook)``;

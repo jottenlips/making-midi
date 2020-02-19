@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import { Canvas, useFrame } from "react-three-fiber";
+import { useFrame } from "react-three-fiber";
 import { withSynth } from "../util/withSynth";
 
 const noteFromRotation = rotation => {
@@ -39,7 +39,7 @@ export const Box = props => {
       <boxBufferGeometry attach="geometry" args={[1, 1, 1]} />
       <meshStandardMaterial
         attach="material"
-        color={hovered ? "#FFFF00" : "#FF00FF"}
+        color={hovered ? "#FFFF00" : "#00ffff"}
       />
     </mesh>
   );
