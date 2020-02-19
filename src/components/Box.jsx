@@ -16,9 +16,15 @@ export const Box = props => {
   // Set up state for the hovered and active state
   const [hovered, setHover] = useState(false);
   const [active, setActive] = useState(false);
-
+  const noteEvent = props.noteEvent;
   // Rotate mesh every frame, this is outside of React without overhead
-  useFrame(() => (mesh.current.rotation.x = mesh.current.rotation.y += 0.01));
+  useFrame(() => {
+    mesh.current.rotation.x = mesh.current.rotation.y += 0.01;
+    mesh.current.rotation.y =
+      noteEvent && noteEvent.includes("C")
+        ? (mesh.current.rotation.y += 1)
+        : mesh.current.rotation.y;
+  });
   const rotationY = mesh.current ? mesh.current.rotation.y / 3 : 1;
   return (
     <mesh

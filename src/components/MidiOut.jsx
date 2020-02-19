@@ -32,13 +32,30 @@ const MidiOut = props => {
         paddingTop: 100
       }}
     >
+      <select>
+        {props.midiOuts &&
+          props.midiOuts.map(output => (
+            <option
+              value={output._midiOutput.id}
+              onChange={() => props.setMidiOutId(output._midiInput.id)}
+            >
+              {output._midiOutput.name}
+            </option>
+          ))}
+      </select>
       <form onSubmit={e => handleSubmit(e, setChords, chords, props.midiOut)}>
         <MidiText value={chords} onChange={e => setChords(e.target.value)} />
         <input type="submit" value="Play" />
       </form>
+
       <ThreeDCanvas>
         {noteBoxes.map((notes, i) => (
-          <Box key={i} notes={notes} position={[-i * 2, 0, 0]} />
+          <Box
+            key={i}
+            midiOut={props.midiOut}
+            notes={notes}
+            position={[-i * 2, 0, 0]}
+          />
         ))}
       </ThreeDCanvas>
     </div>
