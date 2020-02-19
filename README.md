@@ -1,4 +1,6 @@
-# MIDI Demos
+# Making MIDI
+
+https://www.meetup.com/Nashville-Music-Programmers/events/268800386/
 
 ## App 1
 
