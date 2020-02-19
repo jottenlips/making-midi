@@ -17,6 +17,11 @@ const handleSubmit = (event, setChords, allChords, output) => {
 
 const MidiOut = props => {
   const [chords, setChords] = useState("");
+  const [noteBoxes, setNoteBoxes] = useState([
+    ["A4", "C4", "D4", "E4", "G4"],
+    ["G4", "A4", "B4", "Db4", "Eb4", "F4"]
+  ]);
+
   console.log(props);
   return (
     <div
@@ -32,7 +37,9 @@ const MidiOut = props => {
         <input type="submit" value="Play" />
       </form>
       <ThreeDCanvas>
-        <Box midiOut={props.midiOut} />
+        {noteBoxes.map((notes, i) => (
+          <Box key={i} notes={notes} position={[-i * 2, 0, 0]} />
+        ))}
       </ThreeDCanvas>
     </div>
   );
@@ -41,6 +48,12 @@ const MidiOut = props => {
 const MidiText = styled.textarea`
   font-size: 32pt;
   font-family: Arial;
+`;
+
+const ScaleInput = styled.input`
+  margin: 10;
+  flex: 1;
+  padding: 10;
 `;
 
 export default MidiOut;

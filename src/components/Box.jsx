@@ -1,10 +1,10 @@
 import React, { useRef, useState } from "react";
 import { useFrame } from "react-three-fiber";
 import { withSynth } from "../util/withSynth";
+import { length } from "ramda";
 
-const noteFromRotation = rotation => {
-  const index = Math.ceil(rotation * 5) % 7;
-  const notes = ["C4", "D4", "Bb3", "G3", "E4", "F5", "D3", "F#5"];
+const noteFromRotation = (rotation, notes) => {
+  const index = Math.ceil(rotation * 5) % length(notes);
   console.log(notes[index]);
   return notes[index];
 };
@@ -28,8 +28,8 @@ export const Box = props => {
       onClick={e => {
         setActive(!active);
         console.log(mesh.current.rotation.y);
-        const note = noteFromRotation(rotationY);
-        props.synth && props.synth.triggerAttackRelease(note);
+        const note = noteFromRotation(rotationY, props.notes);
+        props.synth && props.synth.triggerAttackRelease(note, 0.5);
         props.midiOut &&
           props.midiOut.playNote(note, "all", { duration: 1000 });
       }}
