@@ -31,11 +31,13 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "deploy": "gh-pages -d build"
+    "deploy": "yarn run build && gh-pages -d build",
+    "prod": "open https://jottenlips.github.io/making-midi/"
   },
   "eslintConfig": {
     "extends": "react-app"
   },
+  "homepage": "https://jottenlips.github.io/making-midi/",
   "browserslist": [
     ">0.2%",
     "not dead",

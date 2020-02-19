@@ -1,6 +1,6 @@
 import React from "react";
 
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { HashRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Fakebook from "./components/Fakebook";
 import { MidiIn } from "./components/MidiIn";
 import MidiOut from "./components/MidiOut";
@@ -9,7 +9,7 @@ import styled from "styled-components";
 
 export const Routes = props => {
   return (
-    <Router basename={window.location.pathname || ""}>
+    <Router basename={"/"}>
       <div style={{ flexDirection: "row" }}>
         <SideNav>
           <div>
