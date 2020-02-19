@@ -37,4 +37,4 @@ const MidiText = styled.textarea`
   font-family: Arial;
 `;
 
-export default withMidi(MidiOut);
+export default MidiOut;
