@@ -31,8 +31,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "src": "--src '[src/**/*.jsx, src/**/*.js]'",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d build --out docs"
   },
   "eslintConfig": {
     "extends": "react-app"
