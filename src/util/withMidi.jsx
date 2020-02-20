@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import WebMidi from "webmidi";
 import { withSynth } from "./withSynth";
-import { compose, path, length } from "ramda";
+import { compose, length } from "ramda";
 
 export const withWebMidi = Cmp => props => {
   const [noteEvent, setNoteEvent] = useState();
