@@ -25,7 +25,7 @@ jobs:
         run: |
           git config --global user.name "jottenlips"
           git config --global user.email "jottenlips@gmail.com"
-          yarn run gh-pages -d build --repo https://jottenlips:$GITHUB_TOKEN@github.com/jottenlips/jazz-fakebook.git
+          yarn run gh-pages -d build --repo https://jottenlips:$GITHUB_TOKEN@github.com/jottenlips/making-midi.git
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           CI: true
