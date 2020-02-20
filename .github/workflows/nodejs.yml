@@ -22,8 +22,9 @@ jobs:
       - run: yarn
       - run: yarn run build
       - run: |
-          git config user.email "jottenlips@gmail.com"
-          git config user.name "jottenlips"
+          git config --global user.name "jottenlips"
+          git config --global user.email "jottenlips@gmail.com"
+          git remote set-url origin https://"$GITHUB_TOKEN"@github.com/making-midi.git
           yarn run deploy
         env:
           CI: true
