@@ -24,7 +24,7 @@ jobs:
       - run: |
           git config --global user.name "jottenlips"
           git config --global user.email "jottenlips@gmail.com"
-          git remote set-url origin https://"$GITHUB_TOKEN"@github.com/making-midi.git
+          git remote set-url origin https://"$GITHUB_TOKEN"@github.com/jottenlips/making-midi.git          
           yarn run deploy
         env:
           CI: true
