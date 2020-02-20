@@ -27,5 +27,4 @@ jobs:
           yarn run deploy
           git push https://"$GITHUB_TOKEN"@github.com/"$GITHUB_REPOSITORY".git HEAD:"gh-pages"
         env:
-          TOKEN: { { $PAGES_TOKEN } }
           CI: true
