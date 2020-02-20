@@ -28,6 +28,7 @@ jobs:
           # git remote set-url origin https://"$PAGES_TOKEN"@github.com/jottenlips/making-midi.git
           # git remote set-url origin https://"$GITHUB_TOKEN"@github.com/jottenlips/making-midi.git
           # yarn run deploy
-          yarn run gh-pages -d build --repo https://"$PAGES_TOKEN"@github.com/jottenlips/jazz-fakebook.git
+          yarn run gh-pages -d build --repo https://jottenlips:$GITHUB_TOKEN@github.com/jottenlips/jazz-fakebook.git
         env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           CI: true
