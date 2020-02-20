@@ -22,7 +22,7 @@ const MidiOut = props => {
     ["G4", "A4", "B4", "Db4", "Eb4", "F4"]
   ]);
 
-  console.log(props);
+  console.log(props, setNoteBoxes);
   return (
     <div
       style={{
@@ -65,12 +65,6 @@ const MidiOut = props => {
 const MidiText = styled.textarea`
   font-size: 32pt;
   font-family: Arial;
-`;
-
-const ScaleInput = styled.input`
-  margin: 10;
-  flex: 1;
-  padding: 10;
 `;
 
 export default MidiOut;

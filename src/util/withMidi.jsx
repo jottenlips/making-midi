@@ -7,7 +7,7 @@ export const withWebMidi = Cmp => props => {
   const [noteEvent, setNoteEvent] = useState();
   const [midiOutId, setMidiOutId] = useState();
   const [midiOut, setMidiOut] = useState();
-  const [midiIn, setMidiIn] = useState();
+  // const [midiIn, setMidiIn] = useState();
   const [midiInId, setMidiInId] = useState();
   const [midiOuts, setMidiOuts] = useState();
   const [midiIns, setMidiIns] = useState();

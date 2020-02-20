@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Box, SynthBox } from "./Box";
+import React from "react";
+import { SynthBox } from "./Box";
 import { ThreeDCanvas } from "./ThreeDCanvas";
 
 export const MidiIn = props => {
