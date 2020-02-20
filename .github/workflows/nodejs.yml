@@ -21,6 +21,9 @@ jobs:
       - run: npm i yarn -g
       - run: yarn
       - run: yarn run build
-      - run: yarn run deploy
+      - run: |
+          git config --global user.email "jottenlips@gmail.com"
+          git config --global user.name "CI"
+          yarn run deploy
         env:
           CI: true
