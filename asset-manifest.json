@@ -1,13 +1,13 @@
 {
   "main.css": "/making-midi/static/css/main.0422bca3.chunk.css",
-  "main.js": "/making-midi/static/js/main.6cceaa35.chunk.js",
-  "main.js.map": "/making-midi/static/js/main.6cceaa35.chunk.js.map",
-  "static/js/1.1917f287.chunk.js": "/making-midi/static/js/1.1917f287.chunk.js",
-  "static/js/1.1917f287.chunk.js.map": "/making-midi/static/js/1.1917f287.chunk.js.map",
+  "main.js": "/making-midi/static/js/main.a20d188b.chunk.js",
+  "main.js.map": "/making-midi/static/js/main.a20d188b.chunk.js.map",
+  "static/js/1.874010f7.chunk.js": "/making-midi/static/js/1.874010f7.chunk.js",
+  "static/js/1.874010f7.chunk.js.map": "/making-midi/static/js/1.874010f7.chunk.js.map",
   "runtime~main.js": "/making-midi/static/js/runtime~main.e642fbe3.js",
   "runtime~main.js.map": "/making-midi/static/js/runtime~main.e642fbe3.js.map",
   "static/css/main.0422bca3.chunk.css.map": "/making-midi/static/css/main.0422bca3.chunk.css.map",
   "index.html": "/making-midi/index.html",
-  "precache-manifest.e5b84a41e322c6b2b457ef3c54c26822.js": "/making-midi/precache-manifest.e5b84a41e322c6b2b457ef3c54c26822.js",
+  "precache-manifest.d29d1f626d2d6b3ae0bc52271f4135c2.js": "/making-midi/precache-manifest.d29d1f626d2d6b3ae0bc52271f4135c2.js",
   "service-worker.js": "/making-midi/service-worker.js"
 }
