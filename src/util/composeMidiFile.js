@@ -5,8 +5,8 @@ const MidiWriter = require("midi-writer-js");
 export const composeMidiFile = (
   chords,
   tempo,
-  countIn = false,
-  bassLine = false
+  bassLine = false,
+  solo = false
 ) => {
   const track = new MidiWriter.Track();
   const drumTrack = new MidiWriter.Track();
@@ -51,7 +51,7 @@ export const composeMidiFile = (
   chordEvents.map(event => track.addEvent(event));
   // countIn &&
   chords.map(chord => {
-    getBassLine(chord, drumTrack);
+    bassLine && getBassLine(chord, drumTrack);
   });
 
   track.setTempo(tempo || 120);
@@ -65,73 +65,37 @@ const getBassLine = (chord, track) => {
     ? (track.addEvent(
         new MidiWriter.NoteEvent({
           pitch: `${chord.notes[0].charAt(0)}2`,
-          duration: "8"
+          duration: "4"
         })
       ),
       track.addEvent(
         new MidiWriter.NoteEvent({
           pitch: `${chord.notes[1].charAt(0)}2`,
-          duration: "8"
-        })
-      ),
-      track.addEvent(
-        new MidiWriter.NoteEvent({
-          pitch: `${chord.notes[0].charAt(0)}2`,
-          duration: "8"
-        })
-      ),
-      track.addEvent(
-        new MidiWriter.NoteEvent({
-          pitch: `${chord.notes[1].charAt(0)}2`,
-          duration: "8"
+          duration: "4"
         })
       ))
     : (track.addEvent(
         new MidiWriter.NoteEvent({
           pitch: `${chord.notes[0].charAt(0)}2`,
-          duration: "8"
+          duration: "4"
         })
       ),
       track.addEvent(
         new MidiWriter.NoteEvent({
           pitch: `${chord.notes[1].charAt(0)}2`,
-          duration: "8"
+          duration: "4"
         })
       ),
       track.addEvent(
         new MidiWriter.NoteEvent({
           pitch: `${chord.notes[2].charAt(0)}2`,
-          duration: "8"
+          duration: "4"
         })
       ),
       track.addEvent(
         new MidiWriter.NoteEvent({
           pitch: `${chord.notes[1].charAt(0)}2`,
-          duration: "8"
+          duration: "4"
         })
-      ),
-      (track.addEvent(
-        new MidiWriter.NoteEvent({
-          pitch: `${chord.notes[0].charAt(0)}2`,
-          duration: "8"
-        })
-      ),
-      track.addEvent(
-        new MidiWriter.NoteEvent({
-          pitch: `${chord.notes[1].charAt(0)}2`,
-          duration: "8"
-        })
-      ),
-      track.addEvent(
-        new MidiWriter.NoteEvent({
-          pitch: `${chord.notes[2].charAt(0)}2`,
-          duration: "8"
-        })
-      ),
-      track.addEvent(
-        new MidiWriter.NoteEvent({
-          pitch: `${chord.notes[1].charAt(0)}2`,
-          duration: "8"
-        })
-      )));
+      ));
 };
