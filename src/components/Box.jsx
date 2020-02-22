@@ -25,9 +25,9 @@ export const Box = props => {
         ? (mesh.current.rotation.y += 1)
         : mesh.current.rotation.y;
 
-    mesh.current.position.z = active
-      ? (mesh.current.position.z += 0.01)
-      : (mesh.current.position.z -= 0.01);
+    // mesh.current.position.z = active
+    //   ? (mesh.current.position.z += 0.01)
+    //   : (mesh.current.position.z -= 0.01);
   });
   const rotationY = mesh.current ? mesh.current.rotation.y / 3 : 1;
   return (

@@ -7,16 +7,18 @@ import styled from "styled-components";
 import { Box } from "./Box";
 import { ThreeDCanvas } from "./ThreeDCanvas";
 
-const handleSubmit = (event, setChords, allChords, output) => {
-  event.preventDefault();
-  setChords(allChords);
-  const chords = flatten(parseSong(allChords, 4));
-  const midiDataUri = composeMidiFile(chords, 240);
+const handleSubmit = ({ e, setChords, allChords, output, tempo, loop }) => {
+  e.preventDefault();
+  const chords = flatten(parseSong({ chords: allChords, octave: 4, loop }));
+  const midiDataUri = composeMidiFile(chords, tempo);
   playMidiThroughOutput(midiDataUri, output);
 };
 
 const MidiOut = props => {
   const [chords, setChords] = useState("");
+  const [tempo, setTempo] = useState(160);
+  const [loop, setLoop] = useState(1);
+
   const [noteBoxes, setNoteBoxes] = useState([
     ["A4", "C4", "D4", "E4", "G4"],
     ["G4", "A4", "B4", "Db4", "Eb4", "F4"],
@@ -39,7 +41,17 @@ const MidiOut = props => {
             </option>
           ))}
       </select>
-      <form onSubmit={e => handleSubmit(e, setChords, chords, props.midiOut)}>
+      <form
+        onSubmit={e =>
+          handleSubmit({
+            e,
+            allChords: chords,
+            output: props.midiOut,
+            loop,
+            tempo
+          })
+        }
+      >
         <MidiText value={chords} onChange={e => setChords(e.target.value)} />
         <input type="submit" value="Play" />
       </form>
@@ -51,6 +63,20 @@ const MidiOut = props => {
           paddingTop: 100
         }}
       >
+        <input
+          value={tempo}
+          type="number"
+          onChange={e => {
+            setTempo(e.target.value);
+          }}
+        />
+        <input
+          value={loop}
+          type="number"
+          onChange={e => {
+            setLoop(e.target.value);
+          }}
+        />
         <ThreeDCanvas style={{ width: "100vw", height: "100vh" }}>
           {noteBoxes.map((notes, i) =>
             i % 2 !== 0 ? (
