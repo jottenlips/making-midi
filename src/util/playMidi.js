@@ -1,11 +1,11 @@
 const MidiPlayer = require("midi-player-js");
 const Soundfont = require("soundfont-player");
 const ac = new AudioContext();
-
-export const playMidi = async dataUri => {
+// https://github.com/gleitz/midi-js-soundfonts
+export const playMidi = async (dataUri, instrument) => {
   Soundfont.instrument(
     ac,
-    "https://raw.githubusercontent.com/gleitz/midi-js-soundfonts/gh-pages/FatBoy/acoustic_grand_piano-mp3.js"
+    `https://raw.githubusercontent.com/gleitz/midi-js-soundfonts/gh-pages/FatBoy/${instrument}-mp3.js`
   ).then(instrument => {
     const Player = new MidiPlayer.Player(event => {
       const time = ac.currentTime;

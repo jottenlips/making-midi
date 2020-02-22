@@ -19,19 +19,15 @@ const MidiOut = props => {
   const [chords, setChords] = useState("");
   const [noteBoxes, setNoteBoxes] = useState([
     ["A4", "C4", "D4", "E4", "G4"],
-    ["G4", "A4", "B4", "Db4", "Eb4", "F4"]
+    ["G4", "A4", "B4", "Db4", "Eb4", "F4"],
+    ["A5", "Db5", "Eb5", "E5", "G2"],
+    ["G4", "A4", "B4", "Db4", "Eb4", "F4"],
+    ["A5", "Db5", "Eb5", "E5", "G2"]
   ]);
 
   console.log(props, setNoteBoxes);
   return (
-    <div
-      style={{
-        width: "100vh",
-        height: "100vh",
-        alignItems: "center",
-        paddingTop: 100
-      }}
-    >
+    <>
       <select>
         {props.midiOuts &&
           props.midiOuts.map(output => (
@@ -47,18 +43,35 @@ const MidiOut = props => {
         <MidiText value={chords} onChange={e => setChords(e.target.value)} />
         <input type="submit" value="Play" />
       </form>
-
-      <ThreeDCanvas>
-        {noteBoxes.map((notes, i) => (
-          <Box
-            key={i}
-            midiOut={props.midiOut}
-            notes={notes}
-            position={[-i * 2, 0, 0]}
-          />
-        ))}
-      </ThreeDCanvas>
-    </div>
+      <div
+        style={{
+          width: "100vh",
+          height: "100vh",
+          alignItems: "center",
+          paddingTop: 100
+        }}
+      >
+        <ThreeDCanvas style={{ width: "100vw", height: "100vh" }}>
+          {noteBoxes.map((notes, i) =>
+            i % 2 !== 0 ? (
+              <Box
+                key={i}
+                midiOut={props.midiOut}
+                notes={notes}
+                position={[-i * 2, -i * 0.5, 0]}
+              />
+            ) : (
+              <Box
+                key={i}
+                midiOut={props.midiOut}
+                notes={notes}
+                position={[i * 0.8, i * 0.5, 0]}
+              />
+            )
+          )}
+        </ThreeDCanvas>
+      </div>
+    </>
   );
 };
 

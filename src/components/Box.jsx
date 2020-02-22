@@ -24,13 +24,17 @@ export const Box = props => {
       noteEvent && noteEvent.includes("C")
         ? (mesh.current.rotation.y += 1)
         : mesh.current.rotation.y;
+
+    mesh.current.position.z = active
+      ? (mesh.current.position.z += 0.01)
+      : (mesh.current.position.z -= 0.01);
   });
   const rotationY = mesh.current ? mesh.current.rotation.y / 3 : 1;
   return (
     <mesh
       {...props}
       ref={mesh}
-      scale={active ? [1.5, 1.5, 1.5] : [1, 1, 1]}
+      scale={!active ? [0.5, 0.5, 0.5] : [0.7, 0.7, 0.7]}
       onClick={e => {
         setActive(!active);
         console.log(mesh.current.rotation.y);
