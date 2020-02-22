@@ -13,7 +13,7 @@ export const Routes = props => {
       <div style={{ flexDirection: "row" }}>
         <SideNav>
           <div>
-            <Link to="/fakebook">Fakebook</Link>
+            <Link to="/fakebook">Jazzbot</Link>
           </div>
           <div>
             <Link to="/midi-in">midi-in</Link>
