@@ -1,37 +1,27 @@
+import { repeat } from "ramda";
+
 const MidiWriter = require("midi-writer-js");
 
 export const composeMidiFile = (chords, tempo) => {
   const track = new MidiWriter.Track();
   const chordEvents = chords.map(chord =>
+    // half length chord
     chord.duration === "2"
-      ? [
+      ? repeat(
           new MidiWriter.NoteEvent({
             pitch: chord.notes,
-            duration: "8"
+            duration: "4"
           }),
+          1
+        )
+      : // full length chord
+        repeat(
           new MidiWriter.NoteEvent({
             pitch: chord.notes,
-            duration: "8"
-          })
-        ]
-      : [
-          new MidiWriter.NoteEvent({
-            pitch: chord.notes,
-            duration: "8"
+            duration: "1"
           }),
-          new MidiWriter.NoteEvent({
-            pitch: chord.notes,
-            duration: "8"
-          }),
-          new MidiWriter.NoteEvent({
-            pitch: chord.notes,
-            duration: "8"
-          }),
-          new MidiWriter.NoteEvent({
-            pitch: chord.notes,
-            duration: "8"
-          })
-        ]
+          1
+        )
   );
   console.log(chords);
   console.log(chordEvents);
