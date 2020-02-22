@@ -10,7 +10,7 @@ const handleSubmit = ({ e, allChords, tempo, instrument, loop }) => {
   e.preventDefault();
   const chords = flatten(parseSong({ chords: allChords, octave: 4, loop }));
   console.log(chords, ":::CHORDS");
-  const midiDataUri = composeMidiFile(chords, tempo);
+  const midiDataUri = composeMidiFile(chords, tempo, true);
   playMidi(midiDataUri, instrument);
 };
 

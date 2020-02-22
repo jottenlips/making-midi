@@ -2,16 +2,17 @@ import { repeat } from "ramda";
 
 const MidiWriter = require("midi-writer-js");
 
-export const composeMidiFile = (chords, tempo) => {
+export const composeMidiFile = (chords, tempo, countIn = false) => {
   const track = new MidiWriter.Track();
 
-  track.addEvent(
-    new MidiWriter.NoteEvent({
-      pitch: "C5",
-      duration: "4",
-      repeat: 4
-    })
-  );
+  countIn &&
+    track.addEvent(
+      new MidiWriter.NoteEvent({
+        pitch: "C5",
+        duration: "4",
+        repeat: 4
+      })
+    );
 
   const chordEvents = chords.map(chord =>
     // half length chord
