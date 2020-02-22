@@ -118,4 +118,42 @@ const generateBassLine = (chord, track) => {
       ));
 };
 
-const generateSolo = (chord, track) => {};
+const generateSolo = (chord, track) => {
+  return chord.duration === "2"
+    ? (track.addEvent(
+        new MidiWriter.NoteEvent({
+          pitch: `${getRandomNote(chord.notes).charAt(0)}2`,
+          duration: "4"
+        })
+      ),
+      track.addEvent(
+        new MidiWriter.NoteEvent({
+          pitch: `${getRandomNote(chord.notes).charAt(0)}2`,
+          duration: "4"
+        })
+      ))
+    : (track.addEvent(
+        new MidiWriter.NoteEvent({
+          pitch: `${getRandomNote(chord.notes).charAt(0)}2`,
+          duration: "4"
+        })
+      ),
+      track.addEvent(
+        new MidiWriter.NoteEvent({
+          pitch: `${getRandomNote(chord.notes).charAt(0)}2`,
+          duration: "4"
+        })
+      ),
+      track.addEvent(
+        new MidiWriter.NoteEvent({
+          pitch: `${getRandomNote(chord.notes).charAt(0)}2`,
+          duration: "4"
+        })
+      ),
+      track.addEvent(
+        new MidiWriter.NoteEvent({
+          pitch: `${getRandomNote(chord.notes).charAt(0)}2`,
+          duration: "4"
+        })
+      ));
+};

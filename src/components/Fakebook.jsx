@@ -6,11 +6,11 @@ import { playMidi } from "../util/playMidi";
 import styled from "styled-components";
 import { soundFonts } from "../samples/SoundFonts";
 
-const handleSubmit = ({ e, allChords, tempo, instrument, loop }) => {
+const handleSubmit = ({ e, allChords, tempo, instrument, loop, bass }) => {
   e.preventDefault();
   const chords = flatten(parseSong({ chords: allChords, octave: 4, loop }));
   console.log(chords, ":::CHORDS");
-  const midiDataUri = composeMidiFile(chords, tempo, true);
+  const midiDataUri = composeMidiFile(chords, tempo, bass);
   playMidi(midiDataUri, instrument);
 };
 
@@ -20,6 +20,8 @@ const Fakebook = props => {
   );
   const [tempo, setTempo] = useState(240);
   const [loop, setLoop] = useState(1);
+  const [bass, setBass] = useState(false);
+
   const [instrument, setInstrument] = useState("bright_acoustic_piano");
 
   return (
@@ -38,45 +40,73 @@ const Fakebook = props => {
             allChords: chords,
             tempo,
             instrument,
-            loop
+            loop,
+            bass
           })
         }
       >
         <JazzText value={chords} onChange={e => setChords(e.target.value)} />
-        <input
-          value={tempo}
-          type="number"
-          onChange={e => {
-            setTempo(e.target.value);
-          }}
-        />
-        <input
-          value={loop}
-          type="number"
-          onChange={e => {
-            setLoop(e.target.value);
-          }}
-        />
-        <select
-          value={instrument}
-          onChange={e => setInstrument(e.target.value)}
-        >
-          {soundFonts.map(font => (
-            <option>{font}</option>
-          ))}
-        </select>
-        <input type="submit" value="Play" />
+        <Options>
+          <Text>Tempo:</Text>
+          <input
+            value={tempo}
+            type="number"
+            onChange={e => {
+              setTempo(e.target.value);
+            }}
+          />
+          <Space />
+
+          <Text>Repeat:</Text>
+          <input
+            value={loop}
+            type="number"
+            onChange={e => {
+              setLoop(e.target.value);
+            }}
+          />
+          <Space />
+
+          <Text>Instrument:</Text>
+
+          <select
+            value={instrument}
+            onChange={e => setInstrument(e.target.value)}
+          >
+            {soundFonts.map(font => (
+              <option>{font}</option>
+            ))}
+          </select>
+          <Space />
+          <Text>Bassline:</Text>
+          <select value={bass} onChange={e => setBass(e.target.value)}>
+            <option value={true}>{"true"}</option>
+            <option value={false}>{"false"}</option>
+          </select>
+          <input type="submit" value="Play" />
+        </Options>
       </form>
     </div>
   );
 };
 
+const Space = styled.div`
+  padding: 20;
+`;
 const JazzText = styled.textarea`
   font-size: 32pt;
   width: 800px;
-  height: 600px;
+  height: 400px;
 `;
 
-//   font-family: Boogaloo-Regular;
+const Text = styled.text`
+  font-size: 12pt;
+`;
+
+const Options = styled.div`
+  justify-content: space-between;
+  flex-direction: column;
+  height: 100px;
+`;
 
 export default styled(Fakebook)``;
