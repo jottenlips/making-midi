@@ -34,7 +34,7 @@ export const withWebMidi = Cmp => props => {
           );
           const note = e.note.name + e.note.octave;
           setNoteEvent(note);
-          props.synth.triggerAttackRelease(note, 1.5);
+          props.synth.triggerAttackRelease(note, 0.5);
         });
         input.removeListener("noteoff");
       }

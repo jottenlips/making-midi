@@ -33,7 +33,7 @@ export const MidiIn = props => {
         />
         <SynthBox
           noteEvent={props.noteEvent}
-          activationNotes={["Eb", "Gb", "C", "D", "B", "Bb", "Eb"]}
+          activationNotes={["E", "Gb", "C", "D", "B", "Bb", "Eb"]}
           notes={["A4", "C5", "D3", "E4", "G4", "A3", "C4", "D5", "E4", "G4"]}
           position={[1, -1, 0]}
         />
@@ -45,7 +45,7 @@ export const MidiIn = props => {
         />
         <SynthBox
           noteEvent={props.noteEvent}
-          activationNotes={["Eb", "E", "C", "G", "Eb", "Gb", "C"]}
+          activationNotes={["D", "E", "C", "G", "Eb", "Gb", "C"]}
           notes={["A4", "C5", "D3", "E4", "G4", "A3", "C4", "D5", "E4", "G4"]}
           position={[-3, -1, 1]}
         />
