@@ -6,9 +6,10 @@ import { playMidi } from "../util/playMidi";
 import styled from "styled-components";
 import { soundFonts } from "../samples/SoundFonts";
 
-const handleSubmit = ({ e, allChords, tempo, instrument }) => {
+const handleSubmit = ({ e, allChords, tempo, instrument, loop }) => {
   e.preventDefault();
-  const chords = flatten(parseSong(allChords, 4));
+  const chords = flatten(parseSong({ chords: allChords, octave: 4, loop }));
+  console.log(chords, ":::CHORDS");
   const midiDataUri = composeMidiFile(chords, tempo);
   playMidi(midiDataUri, instrument);
 };
@@ -18,8 +19,7 @@ const Fakebook = props => {
     "BMaj7 D7 | GMaj7 Bb7 | EbMaj7 | Am7 D7 | GMaj7 Bb7 | EbMaj7 F#7 | BMaj7| Fm7 Bb7 | EbMaj7 | Am7 D7 | GMaj7 | C#m7 F#7 | BMaj7 | Fm7 Bb7| EbMaj7 | C#m7 F#7"
   );
   const [tempo, setTempo] = useState(240);
-  const [loops, setLoops] = useState(1);
-
+  const [loop, setLoop] = useState(1);
   const [instrument, setInstrument] = useState("bright_acoustic_piano");
 
   return (
@@ -38,7 +38,7 @@ const Fakebook = props => {
             allChords: chords,
             tempo,
             instrument,
-            loops
+            loop
           })
         }
       >
@@ -51,10 +51,10 @@ const Fakebook = props => {
           }}
         />
         <input
-          value={loops}
+          value={loop}
           type="number"
           onChange={e => {
-            setLoops(e.target.value);
+            setLoop(e.target.value);
           }}
         />
         <select

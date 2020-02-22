@@ -4,6 +4,15 @@ const MidiWriter = require("midi-writer-js");
 
 export const composeMidiFile = (chords, tempo) => {
   const track = new MidiWriter.Track();
+
+  track.addEvent(
+    new MidiWriter.NoteEvent({
+      pitch: "C5",
+      duration: "4",
+      repeat: 4
+    })
+  );
+
   const chordEvents = chords.map(chord =>
     // half length chord
     chord.duration === "2"
@@ -23,6 +32,7 @@ export const composeMidiFile = (chords, tempo) => {
           1
         )
   );
+
   console.log(chords);
   console.log(chordEvents);
   // track.addEvent(chordEvents);

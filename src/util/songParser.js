@@ -1,9 +1,12 @@
 import * as tonal from "tonal";
+import { repeat } from "ramda";
 
-export const parseSong = (rawChords, octave) => {
-  const measures = rawChords.split("|");
-  const chords = parseChords(measures);
-  const song = appendProgressionDetails(chords, octave);
+export const parseSong = ({ chords, octave, loop }) => {
+  const loopedChords = repeat(chords, loop).join("|");
+  console.log(loopedChords, ":::LOOP");
+  const measures = loopedChords.split("|");
+  const parsedChords = parseChords(measures);
+  const song = appendProgressionDetails(parsedChords, octave);
   return song;
 };
 
