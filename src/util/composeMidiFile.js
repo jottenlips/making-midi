@@ -1,45 +1,137 @@
-import { repeat } from "ramda";
+import { repeat, slice } from "ramda";
 
 const MidiWriter = require("midi-writer-js");
 
-export const composeMidiFile = (chords, tempo, countIn = false) => {
+export const composeMidiFile = (
+  chords,
+  tempo,
+  countIn = false,
+  bassLine = false
+) => {
   const track = new MidiWriter.Track();
+  const drumTrack = new MidiWriter.Track();
 
-  countIn &&
-    track.addEvent(
-      new MidiWriter.NoteEvent({
-        pitch: "C5",
-        duration: "4",
-        repeat: 4
-      })
-    );
+  // countIn &&
+  //   track.addEvent(
+  //     new MidiWriter.NoteEvent({
+  //       pitch: "C5",
+  //       duration: "4",
+  //       repeat: 4
+  //     })
+  //   );
+  // countIn &&
+  //   drumTrack.addEvent(
+  //     new MidiWriter.NoteEvent({
+  //       pitch: "C5",
+  //       duration: "4",
+  //       repeat: 4
+  //     })
+  //   );
 
   const chordEvents = chords.map(chord =>
     // half length chord
     chord.duration === "2"
       ? repeat(
           new MidiWriter.NoteEvent({
-            pitch: chord.notes,
-            duration: "4"
+            pitch: slice(1, Infinity, chord.notes),
+            duration: "2"
           }),
           1
         )
       : // full length chord
         repeat(
           new MidiWriter.NoteEvent({
-            pitch: chord.notes,
+            pitch: slice(1, Infinity, chord.notes),
             duration: "1"
           }),
           1
         )
   );
-
-  console.log(chords);
-  console.log(chordEvents);
   // track.addEvent(chordEvents);
   chordEvents.map(event => track.addEvent(event));
+  // countIn &&
+  chords.map(chord => {
+    getBassLine(chord, drumTrack);
+  });
+
   track.setTempo(tempo || 120);
-  const write = new MidiWriter.Writer(track);
+  const write = new MidiWriter.Writer([track, drumTrack]);
   console.log(write.dataUri());
   return write.dataUri();
+};
+
+const getBassLine = (chord, track) => {
+  return chord.duration === "2"
+    ? (track.addEvent(
+        new MidiWriter.NoteEvent({
+          pitch: `${chord.notes[0].charAt(0)}2`,
+          duration: "8"
+        })
+      ),
+      track.addEvent(
+        new MidiWriter.NoteEvent({
+          pitch: `${chord.notes[1].charAt(0)}2`,
+          duration: "8"
+        })
+      ),
+      track.addEvent(
+        new MidiWriter.NoteEvent({
+          pitch: `${chord.notes[0].charAt(0)}2`,
+          duration: "8"
+        })
+      ),
+      track.addEvent(
+        new MidiWriter.NoteEvent({
+          pitch: `${chord.notes[1].charAt(0)}2`,
+          duration: "8"
+        })
+      ))
+    : (track.addEvent(
+        new MidiWriter.NoteEvent({
+          pitch: `${chord.notes[0].charAt(0)}2`,
+          duration: "8"
+        })
+      ),
+      track.addEvent(
+        new MidiWriter.NoteEvent({
+          pitch: `${chord.notes[1].charAt(0)}2`,
+          duration: "8"
+        })
+      ),
+      track.addEvent(
+        new MidiWriter.NoteEvent({
+          pitch: `${chord.notes[2].charAt(0)}2`,
+          duration: "8"
+        })
+      ),
+      track.addEvent(
+        new MidiWriter.NoteEvent({
+          pitch: `${chord.notes[1].charAt(0)}2`,
+          duration: "8"
+        })
+      ),
+      (track.addEvent(
+        new MidiWriter.NoteEvent({
+          pitch: `${chord.notes[0].charAt(0)}2`,
+          duration: "8"
+        })
+      ),
+      track.addEvent(
+        new MidiWriter.NoteEvent({
+          pitch: `${chord.notes[1].charAt(0)}2`,
+          duration: "8"
+        })
+      ),
+      track.addEvent(
+        new MidiWriter.NoteEvent({
+          pitch: `${chord.notes[2].charAt(0)}2`,
+          duration: "8"
+        })
+      ),
+      track.addEvent(
+        new MidiWriter.NoteEvent({
+          pitch: `${chord.notes[1].charAt(0)}2`,
+          duration: "8"
+        })
+      )));
 };

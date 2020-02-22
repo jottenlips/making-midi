@@ -7,6 +7,7 @@ export const parseSong = ({ chords, octave, loop }) => {
   const measures = loopedChords.split("|");
   const parsedChords = parseChords(measures);
   const song = appendProgressionDetails(parsedChords, octave);
+  console.log(song, ":::SONG");
   return song;
 };
 
