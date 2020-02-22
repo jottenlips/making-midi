@@ -25,7 +25,7 @@ export const playMidiThroughOutput = async (dataUri, output) => {
     const time = ac.currentTime;
     console.log(event);
     event.name === "Note on" && output
-      ? output.playNote(event.noteName, "all", { duration: time * 100 })
+      ? output.playNote(event.noteName, "all", { time })
       : console.log(event);
   });
   Player.loadDataUri(dataUri);

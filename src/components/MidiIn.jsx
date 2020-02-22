@@ -21,8 +21,33 @@ export const MidiIn = props => {
       <ThreeDCanvas>
         <SynthBox
           noteEvent={props.noteEvent}
+          activationNotes={["C", "D", "F", "G", "B", "E", "F"]}
           notes={["A4", "C5", "D3", "E4", "G4", "A3", "C4", "D5", "E4", "G4"]}
-          position={[0, 0, 0]}
+          position={[1, 0, 0]}
+        />
+        <SynthBox
+          noteEvent={props.noteEvent}
+          activationNotes={["Bb", "Ab", "D", "F", "E", "F", "G"]}
+          notes={["A4", "C5", "D3", "E4", "G4", "A3", "C4", "D5", "E4", "G4"]}
+          position={[1, 1, 0]}
+        />
+        <SynthBox
+          noteEvent={props.noteEvent}
+          activationNotes={["Eb", "Gb", "C", "D", "B", "Bb", "Eb"]}
+          notes={["A4", "C5", "D3", "E4", "G4", "A3", "C4", "D5", "E4", "G4"]}
+          position={[1, -1, 0]}
+        />
+        <SynthBox
+          noteEvent={props.noteEvent}
+          activationNotes={["Eb", "Gb", "C", "A", "C", "D", "B"]}
+          notes={["A4", "C5", "D3", "E4", "G4", "A3", "C4", "D5", "E4", "G4"]}
+          position={[-2, -1, 1]}
+        />
+        <SynthBox
+          noteEvent={props.noteEvent}
+          activationNotes={["Eb", "E", "C", "G", "Eb", "Gb", "C"]}
+          notes={["A4", "C5", "D3", "E4", "G4", "A3", "C4", "D5", "E4", "G4"]}
+          position={[-3, -1, 1]}
         />
       </ThreeDCanvas>
     </div>

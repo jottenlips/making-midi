@@ -7,10 +7,10 @@ import styled from "styled-components";
 import { Box } from "./Box";
 import { ThreeDCanvas } from "./ThreeDCanvas";
 
-const handleSubmit = ({ e, setChords, allChords, output, tempo, loop }) => {
+const handleSubmit = ({ e, allChords, output, tempo, loop, bass }) => {
   e.preventDefault();
   const chords = flatten(parseSong({ chords: allChords, octave: 4, loop }));
-  const midiDataUri = composeMidiFile(chords, tempo);
+  const midiDataUri = composeMidiFile(chords, tempo, bass);
   playMidiThroughOutput(midiDataUri, output);
 };
 
@@ -18,6 +18,7 @@ const MidiOut = props => {
   const [chords, setChords] = useState("");
   const [tempo, setTempo] = useState(160);
   const [loop, setLoop] = useState(1);
+  const [bass, setBass] = useState(false);
 
   const [noteBoxes, setNoteBoxes] = useState([
     ["A4", "C4", "D4", "E4", "G4"],
@@ -48,7 +49,8 @@ const MidiOut = props => {
             allChords: chords,
             output: props.midiOut,
             loop,
-            tempo
+            tempo,
+            bass
           })
         }
       >
@@ -63,20 +65,34 @@ const MidiOut = props => {
           paddingTop: 100
         }}
       >
-        <input
-          value={tempo}
-          type="number"
-          onChange={e => {
-            setTempo(e.target.value);
-          }}
-        />
-        <input
-          value={loop}
-          type="number"
-          onChange={e => {
-            setLoop(e.target.value);
-          }}
-        />
+        <Options>
+          <Text>Tempo:</Text>
+          <input
+            value={tempo}
+            type="number"
+            onChange={e => {
+              setTempo(e.target.value);
+            }}
+          />
+          <Space />
+
+          <Text>Repeat:</Text>
+          <input
+            value={loop}
+            type="number"
+            onChange={e => {
+              setLoop(e.target.value);
+            }}
+          />
+
+          <Space />
+          <Text>Bassline:</Text>
+          <select value={bass} onChange={e => setBass(e.target.value)}>
+            <option value={true}>{"true"}</option>
+            <option value={false}>{"false"}</option>
+          </select>
+          <input type="submit" value="Play" />
+        </Options>
         <ThreeDCanvas style={{ width: "100vw", height: "100vh" }}>
           {noteBoxes.map((notes, i) =>
             i % 2 !== 0 ? (
@@ -84,14 +100,14 @@ const MidiOut = props => {
                 key={i}
                 midiOut={props.midiOut}
                 notes={notes}
-                position={[-i * 2, -i * 0.5, 0]}
+                position={[-i, 0.5, 0]}
               />
             ) : (
               <Box
                 key={i}
                 midiOut={props.midiOut}
                 notes={notes}
-                position={[i * 0.8, i * 0.5, 0]}
+                position={[i - 4, 2, 0]}
               />
             )
           )}
@@ -104,6 +120,19 @@ const MidiOut = props => {
 const MidiText = styled.textarea`
   font-size: 32pt;
   font-family: Arial;
+`;
+
+const Space = styled.div`
+  padding: 20;
+`;
+const Text = styled.text`
+  font-size: 12pt;
+`;
+
+const Options = styled.div`
+  justify-content: space-between;
+  flex-direction: column;
+  height: 100px;
 `;
 
 export default MidiOut;

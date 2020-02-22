@@ -1,6 +1,5 @@
 import React from "react";
 import Tone from "tone";
-var distortion = new Tone.Distortion(0.6);
 var tremolo = new Tone.Tremolo().start();
 
 export const withSynth = Cmp => props => {
@@ -18,7 +17,7 @@ export const withSynth = Cmp => props => {
       sustain: 0.1,
       release: 0.1
     }
-  }).chain(distortion, tremolo, Tone.Master);
+  }).chain(tremolo, Tone.Master);
 
   const fmSynth = new Tone.FMSynth().toMaster();
 

@@ -50,10 +50,11 @@ export const composeMidiFile = (
   );
   // track.addEvent(chordEvents);
   chordEvents.map(event => track.addEvent(event));
-  // countIn &&
-  chords.map(chord => {
-    bassLine && generateBassLine(chord, bassTrack);
-  });
+
+  bassLine &&
+    chords.map(chord => {
+      generateBassLine(chord, bassTrack);
+    });
 
   chords.map(chord => {
     solo && generateSolo(chord, soloTrack);

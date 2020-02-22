@@ -21,13 +21,39 @@ export const Box = props => {
   useFrame(() => {
     mesh.current.rotation.x = mesh.current.rotation.y += 0.01;
     mesh.current.rotation.y =
-      noteEvent && noteEvent.includes("C")
+      noteEvent && noteEvent.includes(props.activationNotes[0])
         ? (mesh.current.rotation.y += 1)
         : mesh.current.rotation.y;
 
-    // mesh.current.position.z = active
-    //   ? (mesh.current.position.z += 0.01)
-    //   : (mesh.current.position.z -= 0.01);
+    mesh.current.position.z =
+      noteEvent && noteEvent.includes(props.activationNotes[1])
+        ? (mesh.current.position.z += 0.01)
+        : mesh.current.position.z;
+
+    mesh.current.position.z =
+      noteEvent && noteEvent.includes(props.activationNotes[2])
+        ? (mesh.current.position.z -= 0.01)
+        : mesh.current.position.z;
+
+    mesh.current.position.y =
+      noteEvent && noteEvent.includes(props.activationNotes[3])
+        ? (mesh.current.position.y -= 0.01)
+        : mesh.current.position.y;
+
+    mesh.current.position.y =
+      noteEvent && noteEvent.includes(props.activationNotes[4])
+        ? (mesh.current.position.y += 0.01)
+        : mesh.current.position.y;
+
+    mesh.current.position.x =
+      noteEvent && noteEvent.includes(props.activationNotes[5])
+        ? (mesh.current.position.x -= 0.01)
+        : mesh.current.position.x;
+
+    mesh.current.position.x =
+      noteEvent && noteEvent.includes(props.activationNotes[6])
+        ? (mesh.current.position.x += 0.01)
+        : mesh.current.position.x;
   });
   const rotationY = mesh.current ? mesh.current.rotation.y / 3 : 1;
   return (
