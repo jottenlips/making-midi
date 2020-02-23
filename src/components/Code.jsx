@@ -120,7 +120,7 @@ https://github.com/djipco/webmidi
 https://www.smashingmagazine.com/2018/03/web-midi-api/
 https://developer.mozilla.org/en-US/docs/Web/API/BaseAudioContext/currentTime
 
-Other libraries user
+Other libraries used
 React.js
 styled-components 
 Tonal (music theory) https://github.com/tonaljs/tonal
