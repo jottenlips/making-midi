@@ -14,8 +14,6 @@
 }
 /* #FFFF00 #FF00FF #FFF6E1 #EEB7F4 #00FFFF */
 .App-header {
-  background-color: #00ffff;
-  background: linear-gradient(90deg, #00ffff 0%, #ff00ff 35%, #ffff00 100%);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -23,6 +21,10 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+}
+
+body {
+  background: linear-gradient(90deg, #00ffff 0%, #ff00ff 35%, #ffff00 100%);
 }
 
 .App-link {

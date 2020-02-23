@@ -15,7 +15,7 @@ const handleSubmit = ({ e, allChords, output, tempo, loop, bass }) => {
 };
 
 const MidiOut = props => {
-  const [chords, setChords] = useState("");
+  const [chords, setChords] = useState("A | B | C | D");
   const [tempo, setTempo] = useState(160);
   const [loop, setLoop] = useState(1);
   const [bass, setBass] = useState(false);
@@ -91,7 +91,6 @@ const MidiOut = props => {
             <option value={true}>{"true"}</option>
             <option value={false}>{"false"}</option>
           </select>
-          <input type="submit" value="Play" />
         </Options>
         <ThreeDCanvas style={{ width: "100vw", height: "100vh" }}>
           {noteBoxes.map((notes, i) =>

@@ -4,6 +4,7 @@ import { HashRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Fakebook from "./components/Fakebook";
 import { MidiIn } from "./components/MidiIn";
 import MidiOut from "./components/MidiOut";
+import { Code } from "./components/Code";
 import { withMidi } from "./util/withMidi";
 import styled from "styled-components";
 
@@ -21,6 +22,9 @@ export const Routes = props => {
           <div>
             <Link to="/midi-out">midi-out</Link>
           </div>
+          <div>
+            <Link to="/code">code</Link>
+          </div>
           {/* <Link to="/midi-chat">midi-chat</Link> */}
         </SideNav>
         <Switch>
@@ -32,6 +36,9 @@ export const Routes = props => {
           </Route>
           <Route path="/midi-out">
             <MidiOut {...props} />
+          </Route>
+          <Route path="/code">
+            <Code {...props} />
           </Route>
           <Route path="/" component={Fakebook}></Route>
         </Switch>

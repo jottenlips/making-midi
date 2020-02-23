@@ -3,11 +3,9 @@ import { repeat } from "ramda";
 
 export const parseSong = ({ chords, octave, loop }) => {
   const loopedChords = repeat(chords, loop).join("|");
-  console.log(loopedChords, ":::LOOP");
   const measures = loopedChords.split("|");
   const parsedChords = parseChords(measures);
   const song = appendProgressionDetails(parsedChords, octave);
-  console.log(song, ":::SONG");
   return song;
 };
 

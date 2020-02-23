@@ -7,7 +7,7 @@ export const withWebMidi = Cmp => props => {
   const [noteEvent, setNoteEvent] = useState();
   const [midiOutId, setMidiOutId] = useState();
   const [midiOut, setMidiOut] = useState();
-  // const [midiIn, setMidiIn] = useState();
+  const [midiIn, setMidiIn] = useState();
   const [midiInId, setMidiInId] = useState();
   const [midiOuts, setMidiOuts] = useState();
   const [midiIns, setMidiIns] = useState();
@@ -28,15 +28,16 @@ export const withWebMidi = Cmp => props => {
         );
 
         setMidiOut(output);
-        input.addListener("noteon", "all", e => {
-          console.log(
-            "Received 'noteon' message (" + e.note.name + e.note.octave + ")."
-          );
-          const note = e.note.name + e.note.octave;
-          setNoteEvent(note);
-          props.synth.triggerAttackRelease(note, 0.5);
-        });
-        input.removeListener("noteoff");
+        setMidiIn(input);
+        // input.addListener("noteon", "all", e => {
+        //   console.log(
+        //     "Received 'noteon' message (" + e.note.name + e.note.octave + ")."
+        //   );
+        //   const note = e.note.name + e.note.octave;
+        //   setNoteEvent(note);
+        //   props.synth.triggerAttackRelease(note, 0.5);
+        // });
+        // input.removeListener("noteoff");
       }
     });
   }, [midiOutId, midiInId, midiIns, midiOuts]);
@@ -49,6 +50,7 @@ export const withWebMidi = Cmp => props => {
       midiIns={midiIns}
       setMidiInId={setMidiInId}
       midiOut={midiOut}
+      midiIn={midiIn}
       {...props}
     >
       {props.children}

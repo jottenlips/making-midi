@@ -1,6 +1,8 @@
-const MidiPlayer = require("midi-player-js");
-const Soundfont = require("soundfont-player");
+import MidiPlayer from "midi-player-js";
+
 const ac = new AudioContext();
+
+const Soundfont = require("soundfont-player");
 // https://github.com/gleitz/midi-js-soundfonts
 export const playMidi = async (dataUri, instrument) => {
   Soundfont.instrument(
@@ -25,7 +27,8 @@ export const playMidiThroughOutput = async (dataUri, output) => {
     const time = ac.currentTime;
     console.log(event);
     event.name === "Note on" && output
-      ? output.playNote(event.noteName, "all", { time })
+      ? output.playNote(event.noteName, "all", { time }) &&
+        output.stopNote(event.noteName, "all", { time: "+500" })
       : console.log(event);
   });
   Player.loadDataUri(dataUri);
