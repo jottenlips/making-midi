@@ -89,7 +89,7 @@ export const Box = props => {
       mesh.current.position.y = 0;
     }
     if (mesh.current.position.z >= 4 || mesh.current.position.z <= -4) {
-      mesh.current.position.y = 0;
+      mesh.current.position.z = 0;
     }
   });
   const rotationY = mesh.current ? mesh.current.rotation.y / 3 : 1;
