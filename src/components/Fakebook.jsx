@@ -94,7 +94,10 @@ const Fakebook = props => {
             <option value={true}>{"true"}</option>
             <option value={false}>{"false"}</option>
           </select>
+          <Space />
           <input type="submit" value="Play" />
+          <Space />
+          <Space />
           <a href={file}>Download MIDI</a>
         </Options>
       </form>
