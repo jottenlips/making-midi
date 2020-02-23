@@ -1,34 +1,10 @@
 import { repeat, slice, concat, reverse } from "ramda";
 
-// const MidiWriter = require("midi-writer-js");
 import MidiWriter from "midi-writer-js";
 
-export const composeMidiFile = (
-  chords,
-  tempo,
-  bassLine = false,
-  solo = false
-) => {
+export const composeMidiFile = (chords, tempo, bassLine = false) => {
   const track = new MidiWriter.Track();
   const bassTrack = new MidiWriter.Track();
-  const soloTrack = new MidiWriter.Track();
-
-  // countIn &&
-  //   track.addEvent(
-  //     new MidiWriter.NoteEvent({
-  //       pitch: "C5",
-  //       duration: "4",
-  //       repeat: 4
-  //     })
-  //   );
-  // countIn &&
-  //   bassTrack.addEvent(
-  //     new MidiWriter.NoteEvent({
-  //       pitch: "C5",
-  //       duration: "4",
-  //       repeat: 4
-  //     })
-  //   );
 
   const chordEvents = chords.map(chord =>
     // half length chord
@@ -49,17 +25,12 @@ export const composeMidiFile = (
           1
         )
   );
-  // track.addEvent(chordEvents);
   chordEvents.map(event => track.addEvent(event));
 
   bassLine &&
     chords.map(chord => {
       generateBassLine(chord, bassTrack);
     });
-
-  chords.map(chord => {
-    solo && generateSolo(chord, soloTrack);
-  });
 
   track.setTempo(tempo || 120);
   const write = new MidiWriter.Writer([track, bassTrack]);
@@ -80,82 +51,20 @@ const getRandomNote = notes => {
 const distributeNoteProbability = notes =>
   concat(notes, slice(1, Infinity, notes));
 
+const addRandomNoteToTrack = (chord, track, length) =>
+  track.addEvent(
+    new MidiWriter.NoteEvent({
+      pitch: `${getRandomNote(chord.notes).charAt(0)}3`,
+      duration: "4"
+    })
+  );
+
 const generateBassLine = (chord, track) => {
   return chord.duration === "2"
-    ? (track.addEvent(
-        new MidiWriter.NoteEvent({
-          pitch: `${getRandomNote(chord.notes).charAt(0)}2`,
-          duration: "4"
-        })
-      ),
-      track.addEvent(
-        new MidiWriter.NoteEvent({
-          pitch: `${getRandomNote(chord.notes).charAt(0)}2`,
-          duration: "4"
-        })
-      ))
-    : (track.addEvent(
-        new MidiWriter.NoteEvent({
-          pitch: `${getRandomNote(chord.notes).charAt(0)}2`,
-          duration: "4"
-        })
-      ),
-      track.addEvent(
-        new MidiWriter.NoteEvent({
-          pitch: `${getRandomNote(chord.notes).charAt(0)}2`,
-          duration: "4"
-        })
-      ),
-      track.addEvent(
-        new MidiWriter.NoteEvent({
-          pitch: `${getRandomNote(chord.notes).charAt(0)}2`,
-          duration: "4"
-        })
-      ),
-      track.addEvent(
-        new MidiWriter.NoteEvent({
-          pitch: `${getRandomNote(chord.notes).charAt(0)}2`,
-          duration: "4"
-        })
-      ));
-};
-
-const generateSolo = (chord, track) => {
-  return chord.duration === "2"
-    ? (track.addEvent(
-        new MidiWriter.NoteEvent({
-          pitch: `${getRandomNote(chord.notes).charAt(0)}2`,
-          duration: "4"
-        })
-      ),
-      track.addEvent(
-        new MidiWriter.NoteEvent({
-          pitch: `${getRandomNote(chord.notes).charAt(0)}2`,
-          duration: "4"
-        })
-      ))
-    : (track.addEvent(
-        new MidiWriter.NoteEvent({
-          pitch: `${getRandomNote(chord.notes).charAt(0)}2`,
-          duration: "4"
-        })
-      ),
-      track.addEvent(
-        new MidiWriter.NoteEvent({
-          pitch: `${getRandomNote(chord.notes).charAt(0)}2`,
-          duration: "4"
-        })
-      ),
-      track.addEvent(
-        new MidiWriter.NoteEvent({
-          pitch: `${getRandomNote(chord.notes).charAt(0)}2`,
-          duration: "4"
-        })
-      ),
-      track.addEvent(
-        new MidiWriter.NoteEvent({
-          pitch: `${getRandomNote(chord.notes).charAt(0)}2`,
-          duration: "4"
-        })
-      ));
+    ? Array(2)
+        .fill()
+        .map(() => addRandomNoteToTrack(chord, track, "4"))
+    : Array(4)
+        .fill()
+        .map(() => addRandomNoteToTrack(chord, track, "4"));
 };
