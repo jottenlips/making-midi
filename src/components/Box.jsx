@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { useFrame } from "react-three-fiber";
 import { withSynth } from "../util/withSynth";
 import { length } from "ramda";
@@ -17,6 +17,8 @@ export const Box = props => {
   const [hovered, setHover] = useState(false);
   const [active, setActive] = useState(false);
   const [activeNote, setActiveNote] = useState();
+  const [cutoffValue, setCutoffValue] = useState(1);
+
   // const noteEvent = props.noteEvent;
   // Rotate mesh every frame, this is outside of React without overhead
 
@@ -27,10 +29,23 @@ export const Box = props => {
         "Received 'noteon' message (" + e.note.name + e.note.octave + ")."
       );
       const note = e.note.name + e.note.octave;
+      props.synth && props.synth.triggerAttackRelease(note, 0.5);
       setActiveNote(note);
     });
 
-  props.synth && props.synth.triggerAttackRelease(activeNote, 0.5);
+  props.midiIn &&
+    !activeNote &&
+    props.midiIn.addListener("controlchange", "all", e => {
+      console.log(e);
+      setCutoffValue(e.value);
+    });
+
+  useEffect(() => {
+    props.synth &&
+      props.synth.set({
+        detune: cutoffValue * 10
+      });
+  }, [cutoffValue]);
 
   props.midiIn && props.midiIn.removeListener("noteoff");
 
