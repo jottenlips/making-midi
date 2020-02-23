@@ -81,6 +81,16 @@ export const Box = props => {
       activeNote && activeNote.includes(props.activationNotes[6])
         ? (mesh.current.position.x += 0.01)
         : mesh.current.position.x;
+
+    if (mesh.current.position.x >= 4 || mesh.current.position.x <= -4) {
+      mesh.current.position.x = 0;
+    }
+    if (mesh.current.position.y >= 4 || mesh.current.position.y <= -4) {
+      mesh.current.position.y = 0;
+    }
+    if (mesh.current.position.z >= 4 || mesh.current.position.z <= -4) {
+      mesh.current.position.y = 0;
+    }
   });
   const rotationY = mesh.current ? mesh.current.rotation.y / 3 : 1;
   return (
