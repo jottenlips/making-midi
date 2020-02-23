@@ -8,10 +8,14 @@ import { Box } from "./Box";
 import { ThreeDCanvas } from "./ThreeDCanvas";
 
 const handleSubmit = ({ e, allChords, output, tempo, loop, bass }) => {
-  e.preventDefault();
-  const chords = flatten(parseSong({ chords: allChords, octave: 4, loop }));
-  const midiDataUri = composeMidiFile(chords, tempo, bass);
-  playMidiThroughOutput(midiDataUri, output);
+  try {
+    e.preventDefault();
+    const chords = flatten(parseSong({ chords: allChords, octave: 4, loop }));
+    const midiDataUri = composeMidiFile(chords, tempo, bass);
+    playMidiThroughOutput(midiDataUri, output);
+  } catch {
+    alert("unable to parse song");
+  }
 };
 
 const MidiOut = props => {

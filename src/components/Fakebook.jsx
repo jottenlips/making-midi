@@ -16,11 +16,15 @@ const handleSubmit = ({
   setFile
 }) => {
   e.preventDefault();
-  const chords = flatten(parseSong({ chords: allChords, octave: 4, loop }));
-  console.log(chords, ":::CHORDS");
-  const midiDataUri = composeMidiFile(chords, tempo, bass);
-  setFile(midiDataUri);
-  playMidi(midiDataUri, instrument);
+  try {
+    const chords = flatten(parseSong({ chords: allChords, octave: 4, loop }));
+    console.log(chords, ":::CHORDS");
+    const midiDataUri = composeMidiFile(chords, tempo, bass);
+    setFile(midiDataUri);
+    playMidi(midiDataUri, instrument);
+  } catch (e) {
+    alert("unable to parse song");
+  }
 };
 
 const Fakebook = props => {
