@@ -19,9 +19,6 @@ export const Box = props => {
   const [activeNote, setActiveNote] = useState();
   const [cutoffValue, setCutoffValue] = useState(1);
 
-  // const noteEvent = props.noteEvent;
-  // Rotate mesh every frame, this is outside of React without overhead
-
   props.midiIn &&
     !activeNote &&
     props.midiIn.addListener("noteon", "all", e => {
@@ -29,7 +26,6 @@ export const Box = props => {
         "Received 'noteon' message (" + e.note.name + e.note.octave + ")."
       );
       const note = e.note.name + e.note.octave;
-      props.synth && props.synth.triggerAttackRelease(note, 0.5);
       setActiveNote(note);
     });
 
@@ -91,7 +87,7 @@ export const Box = props => {
     <mesh
       {...props}
       ref={mesh}
-      scale={!active ? [0.5, 0.5, 0.5] : [0.7, 0.7, 0.7]}
+      scale={!active ? [(0.5 * cutoffValue) / 10, 0.5, 0.5] : [0.7, 0.7, 0.7]}
       onClick={e => {
         setActive(!active);
         console.log(mesh.current.rotation.y);
