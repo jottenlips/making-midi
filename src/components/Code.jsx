@@ -16,7 +16,8 @@ const onMIDISuccess = (webMidiAPI) => {
     })
 }
 const noteOn = (midiNote, velocity) => {
-    // Use a player to play the note
+    // Use a Web Audio API or library 
+    // to play the note
     // or update your UI
     play(midiNote, velocity)
 }
@@ -24,6 +25,7 @@ const noteOn = (midiNote, velocity) => {
 const onMIDIMessage = (event) => {
     const data = event.data,
     const [type, note, velocity] = data,
+
     type === 144 && noteOn(note, velocity);
     type === 128 && noteOff(note, velocity);
 }
@@ -43,14 +45,16 @@ WebMidi.enable(() => {
     const input = WebMidi.getInputById(
         WebMidi.inputs[0]._midiInput.id
     );
+
     const output = WebMidi.getOutputById(
         WebMidi.outputs[0]._midiOutput.id
     );
 
     // much easier to implement a noteon
     input.addListener("noteon", "all", e => {
+
         const note = e.note.name + e.note.octave;
-        console.log(note);
+
         // Play with instrument or use the note 
         // to control a display
         synth.triggerAttackRelease(note, 0.5);
@@ -98,9 +102,11 @@ const ac = new AudioContext();
       const time = ac.currentTime;
 
       // This can be any MIDI event
+      // This is the block in which the music is played
       event.name === "Note on" && output && 
             output.playNote(event.noteName, "all", { time })
     });
+
     Player.loadDataUri(dataUri);
     Player.play();
   };
