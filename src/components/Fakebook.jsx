@@ -22,7 +22,7 @@ const Fakebook = props => {
   const [loop, setLoop] = useState(1);
   const [bass, setBass] = useState(false);
 
-  const [instrument, setInstrument] = useState("bright_acoustic_piano");
+  const [instrument, setInstrument] = useState("marimba");
 
   return (
     <div
