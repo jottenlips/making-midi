@@ -6,11 +6,20 @@ import { playMidi } from "../util/playMidi";
 import styled from "styled-components";
 import { soundFonts } from "../samples/SoundFonts";
 
-const handleSubmit = ({ e, allChords, tempo, instrument, loop, bass }) => {
+const handleSubmit = ({
+  e,
+  allChords,
+  tempo,
+  instrument,
+  loop,
+  bass,
+  setFile
+}) => {
   e.preventDefault();
   const chords = flatten(parseSong({ chords: allChords, octave: 4, loop }));
   console.log(chords, ":::CHORDS");
   const midiDataUri = composeMidiFile(chords, tempo, bass);
+  setFile(midiDataUri);
   playMidi(midiDataUri, instrument);
 };
 
@@ -21,6 +30,7 @@ const Fakebook = props => {
   const [tempo, setTempo] = useState(240);
   const [loop, setLoop] = useState(1);
   const [bass, setBass] = useState(false);
+  const [file, setFile] = useState();
 
   const [instrument, setInstrument] = useState("bright_acoustic_piano");
 
@@ -41,7 +51,8 @@ const Fakebook = props => {
             tempo,
             instrument,
             loop,
-            bass
+            bass,
+            setFile
           })
         }
       >
@@ -84,6 +95,7 @@ const Fakebook = props => {
             <option value={false}>{"false"}</option>
           </select>
           <input type="submit" value="Play" />
+          <a href={file}>Download MIDI</a>
         </Options>
       </form>
     </div>
@@ -93,12 +105,6 @@ const Fakebook = props => {
 const Space = styled.div`
   padding: 20;
 `;
-const JazzText = styled.textarea`
-  font-size: 32pt;
-  width: 800px;
-  height: 400px;
-`;
-
 const Text = styled.text`
   font-size: 12pt;
 `;
@@ -107,6 +113,11 @@ const Options = styled.div`
   justify-content: space-between;
   flex-direction: column;
   height: 100px;
+`;
+const JazzText = styled.textarea`
+  font-size: 32pt;
+  width: 800px;
+  height: 400px;
 `;
 
 export default styled(Fakebook)``;
