@@ -15,6 +15,7 @@ const onMIDISuccess = (webMidiAPI) => {
         input.value.onmidimessage = onMIDIMessage;
     })
 }
+
 const noteOn = (midiNote, velocity) => {
     // Use a Web Audio API or library 
     // to play the note
@@ -36,6 +37,7 @@ const onMIDIMessage = (event) => {
 
   const webMidiJsCodeBlock = `
 import WebMidi from "webmidi";
+
 WebMidi.enable(() => {
 
     // Easily get inputs and outputs
@@ -86,7 +88,7 @@ WebMidi.enable(() => {
   `;
 
   const midiOutputCodeBlock = `
-const MidiPlayer = require("midi-player-js");
+import MidiPlayer from "midi-player-js";
 
 const ac = new AudioContext();
 

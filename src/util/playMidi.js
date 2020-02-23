@@ -1,6 +1,8 @@
-const MidiPlayer = require("midi-player-js");
-const Soundfont = require("soundfont-player");
+import MidiPlayer from "midi-player-js";
+
 const ac = new AudioContext();
+
+const Soundfont = require("soundfont-player");
 // https://github.com/gleitz/midi-js-soundfonts
 export const playMidi = async (dataUri, instrument) => {
   Soundfont.instrument(
