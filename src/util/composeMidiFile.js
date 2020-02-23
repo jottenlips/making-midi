@@ -1,6 +1,7 @@
 import { repeat, slice, concat, reverse } from "ramda";
 
-const MidiWriter = require("midi-writer-js");
+// const MidiWriter = require("midi-writer-js");
+import MidiWriter from "midi-writer-js";
 
 export const composeMidiFile = (
   chords,

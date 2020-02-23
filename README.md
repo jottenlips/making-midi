@@ -4,7 +4,7 @@ https://www.meetup.com/Nashville-Music-Programmers/events/268800386/
 
 ## App 1
 
-- Jazz fakebook MIDI player
+- Jazz chart MIDI player
 
 ## App 2
 
