@@ -16,42 +16,58 @@ export const Box = props => {
   // Set up state for the hovered and active state
   const [hovered, setHover] = useState(false);
   const [active, setActive] = useState(false);
-  const noteEvent = props.noteEvent;
+  const [activeNote, setActiveNote] = useState();
+  // const noteEvent = props.noteEvent;
   // Rotate mesh every frame, this is outside of React without overhead
+
+  props.midiIn &&
+    !activeNote &&
+    props.midiIn.addListener("noteon", "all", e => {
+      console.log(
+        "Received 'noteon' message (" + e.note.name + e.note.octave + ")."
+      );
+      const note = e.note.name + e.note.octave;
+      setActiveNote(note);
+    });
+
+  props.synth && props.synth.triggerAttackRelease(activeNote, 0.5);
+
+  props.midiIn && props.midiIn.removeListener("noteoff");
+
   useFrame(() => {
     mesh.current.rotation.x = mesh.current.rotation.y += 0.01;
     mesh.current.rotation.y =
-      noteEvent && noteEvent.includes(props.activationNotes[0])
+      activeNote && activeNote.includes(props.activationNotes[0])
         ? (mesh.current.rotation.y += 1)
         : mesh.current.rotation.y;
 
     mesh.current.position.z =
-      noteEvent && noteEvent.includes(props.activationNotes[1])
+      activeNote && activeNote.includes(props.activationNotes[1])
         ? (mesh.current.position.z += 0.01)
         : mesh.current.position.z;
 
     mesh.current.position.z =
-      noteEvent && noteEvent.includes(props.activationNotes[2])
+      activeNote && activeNote.includes(props.activationNotes[2])
         ? (mesh.current.position.z -= 0.01)
         : mesh.current.position.z;
 
     mesh.current.position.y =
-      noteEvent && noteEvent.includes(props.activationNotes[3])
+      activeNote && activeNote.includes(props.activationNotes[3])
         ? (mesh.current.position.y -= 0.01)
         : mesh.current.position.y;
 
     mesh.current.position.y =
-      noteEvent && noteEvent.includes(props.activationNotes[4])
+      activeNote && activeNote.includes(props.activationNotes[4])
         ? (mesh.current.position.y += 0.01)
         : mesh.current.position.y;
 
     mesh.current.position.x =
-      noteEvent && noteEvent.includes(props.activationNotes[5])
+      activeNote && activeNote.includes(props.activationNotes[5])
         ? (mesh.current.position.x -= 0.01)
         : mesh.current.position.x;
 
     mesh.current.position.x =
-      noteEvent && noteEvent.includes(props.activationNotes[6])
+      activeNote && activeNote.includes(props.activationNotes[6])
         ? (mesh.current.position.x += 0.01)
         : mesh.current.position.x;
   });

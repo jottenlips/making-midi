@@ -3,7 +3,14 @@ import { Canvas } from "react-three-fiber";
 
 export const ThreeDCanvas = props => {
   return (
-    <Canvas style={{ width: "100vw", height: "100vh" }}>
+    <Canvas
+      style={{
+        width: "100vw",
+        height: "100vh",
+        marginLeft: "-200px"
+        // borderStyle: "solid"
+      }}
+    >
       <ambientLight />
       <pointLight position={[10, 10, 10]} />
       {props.children}

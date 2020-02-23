@@ -48,7 +48,7 @@ const distributeNoteProbability = notes =>
 const addRandomNoteToTrack = (chord, track, length) => {
   track.addEvent(
     new MidiWriter.NoteEvent({
-      pitch: `${getRandomNote(chord.notes).charAt(0)}3`,
+      pitch: `${getRandomNote(chord.notes).charAt(0)}2`,
       duration: length
     })
   );
