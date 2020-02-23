@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/making-midi/precache-manifest.8d9cf2dcf035c9c749c362bd81784cc8.js"
+  "/making-midi/precache-manifest.522c6508fc42d50a70889183c6b0eb45.js"
 );
 
 workbox.clientsClaim();
