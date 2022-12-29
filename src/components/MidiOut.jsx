@@ -32,43 +32,42 @@ const MidiOut = props => {
     ["A5", "Db5", "Eb5", "E5", "G2"]
   ]);
 
-  console.log(props, setNoteBoxes);
   return (
-    <>
-      <select>
-        {props.midiOuts &&
-          props.midiOuts.map(output => (
-            <option
-              value={output._midiOutput.id}
-              onChange={() => props.setMidiOutId(output._midiInput.id)}
-            >
-              {output._midiOutput.name}
-            </option>
-          ))}
-      </select>
-      <form
-        onSubmit={e =>
-          handleSubmit({
-            e,
-            allChords: chords,
-            output: props.midiOut,
-            loop,
-            tempo,
-            bass
-          })
-        }
-      >
-        <MidiText value={chords} onChange={e => setChords(e.target.value)} />
-        <input type="submit" value="Play" />
-      </form>
       <div
         style={{
-          width: "100vh",
-          height: "100vh",
-          alignItems: "center",
-          paddingTop: 100
+        display: 'flex',
+        flexDirection: 'column',
+        width: "100%",
+        paddingTop: 90,
+        alignItems: "center"
         }}
       >
+        <select>
+          {props.midiOuts &&
+            props.midiOuts.map(output => (
+              <option
+                value={output._midiOutput.id}
+                onChange={() => props.setMidiOutId(output._midiInput.id)}
+              >
+                {output._midiOutput.name}
+              </option>
+            ))}
+        </select>
+        <form
+          onSubmit={e =>
+            handleSubmit({
+              e,
+              allChords: chords,
+              output: props.midiOut,
+              loop,
+              tempo,
+              bass
+            })
+          }
+        >
+          <MidiText value={chords} onChange={e => setChords(e.target.value)} />
+          <input type="submit" value="Play" />
+        </form>
         <Options>
           <Text>Tempo:</Text>
           <input
@@ -96,7 +95,7 @@ const MidiOut = props => {
             <option value={false}>{"false"}</option>
           </select>
         </Options>
-        <ThreeDCanvas style={{ width: "100vw", height: "100vh" }}>
+        <ThreeDCanvas style={{ width: "100%", height: 400}}>
           {noteBoxes.map((notes, i) =>
             i % 2 !== 0 ? (
               <Box
@@ -116,12 +115,11 @@ const MidiOut = props => {
           )}
         </ThreeDCanvas>
       </div>
-    </>
   );
 };
 
 const MidiText = styled.textarea`
-  font-size: 32pt;
+  font-size: 16pt;
   font-family: Arial;
 `;
 

@@ -6,9 +6,7 @@ export const ThreeDCanvas = props => {
     <Canvas
       style={{
         width: "100vw",
-        height: "100vh",
-        marginLeft: "-200px"
-        // borderStyle: "solid"
+        height: '800px',
       }}
     >
       <ambientLight />
@@ -20,7 +18,7 @@ export const ThreeDCanvas = props => {
 
 export const SmallCanvas = props => {
   return (
-    <Canvas style={{ width: "100%", height: "100%" }}>
+    <Canvas style={{ width: 290, height: 150 }}>
       <ambientLight />
       <pointLight position={[10, 10, 10]} />
       {props.children}

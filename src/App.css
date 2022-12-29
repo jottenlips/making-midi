@@ -1,41 +1,12 @@
-.App {
-  text-align: center;
-}
-
-/* @font-face {
-  font-family: Boogaloo-Regular;
-  src: url(./Boogaloo/Boogaloo-Regular.ttf);
-  font-weight: bold;
-} */
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-}
-/* #FFFF00 #FF00FF #FFF6E1 #EEB7F4 #00FFFF */
-.App-header {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
 body {
-  background: linear-gradient(90deg, #00ffff 0%, #ff00ff 35%, #ffff00 100%);
+    display: flex;
+    flex-direction: column;
+    color: white;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(-45deg, #ef7455, #e84c7e, #32a6d6, #23eeab);
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+a {
+    color: #ffffff;
 }

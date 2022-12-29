@@ -13,19 +13,18 @@ export const Routes = props => {
     <Router basename={"/"}>
       <div style={{ flexDirection: "row" }}>
         <SideNav>
-          <div>
+          <NavItem>
             <Link to="/fakebook">Jazzbot</Link>
-          </div>
-          <div>
+          </NavItem>
+          <NavItem>
             <Link to="/midi-in">midi-in</Link>
-          </div>
-          <div>
+          </NavItem>
+          <NavItem>
             <Link to="/midi-out">midi-out</Link>
-          </div>
-          <div>
+          </NavItem>
+          <NavItem>
             <Link to="/code">code</Link>
-          </div>
-          {/* <Link to="/midi-chat">midi-chat</Link> */}
+          </NavItem>
         </SideNav>
         <Switch>
           <Route path="/fakebook">
@@ -47,15 +46,28 @@ export const Routes = props => {
   );
 };
 
+
+const NavItem = styled.div`
+  padding-left: 20px;
+  color: #ffffff;
+`;
+
 const SideNav = styled.div`
-  height: 100%;
-  width: 50;
-  left: 0;
-  z-index: 20;
   position: fixed;
-  flex: 1;
-  background-color: #ff00ff;
+  display: flex;
+  left: 0;
+  height: 50px;
+  width: 100vw;
+  z-index: 20;
+  background-color: #000000;
   justify-content: left;
+  align-items: center;
+  flex-direction: row;
+  padding-bottom: 10px;
+  top: 0;
+  border-bottom: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: #ffffff
 `;
 
 export default withMidi(Routes);

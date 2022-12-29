@@ -4,7 +4,11 @@ import { ThreeDCanvas } from "./ThreeDCanvas";
 import { reverse } from "ramda";
 export const MidiIn = props => {
   return (
-    <div style={{ width: "100vh", height: "100vh", alignItems: "center" }}>
+    <div style={{
+      display: 'flex',
+      flexDirection: 'column',
+      width: "100%", paddingTop: 90, alignItems: "center"
+    }}>
       <div style={{ justifyContent: "space-between" }}>
         <select>
           {props.midiIns &&

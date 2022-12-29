@@ -41,10 +41,10 @@ const Fakebook = props => {
   return (
     <div
       style={{
-        width: "100vh",
-        height: "100vh",
+        width: "100%",
+        height: '100vh',
         alignItems: "center",
-        paddingTop: 100
+        paddingTop: 90
       }}
     >
       <form
@@ -122,8 +122,9 @@ const Options = styled.div`
   height: 100px;
 `;
 const JazzText = styled.textarea`
-  font-size: 32pt;
-  width: 800px;
+  font-size: 24pt;
+  max-width: 800px;
+  width: 100%;
   height: 400px;
 `;
 

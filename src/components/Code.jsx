@@ -131,12 +131,18 @@ Tone.js (synthesizers) https://tonejs.github.io/
 `;
 
   return (
-    <div style={{ width: "100vh", height: "100vh", alignItems: "center" }}>
-      <div style={{ justifyContent: "space-between" }}>
-        <div style={{ padding: "20px" }} />
+    <div style={{ paddingTop: 90 }}>
+      <div style={{
+        // display: 'flex',
+        // justifyContent: "center",
+        // alignItems: 'center',
+        // padding: 20,
+        // flexDirection: 'column',
+      }}>
+
         <CodeTitle>Web Midi API</CodeTitle>
         <CodeSnippet>
-          <CodeText>{rawWebMidiAPICodeBlock}</CodeText>
+          {rawWebMidiAPICodeBlock}
         </CodeSnippet>
         <SmallCanvas>
           <SynthBox
@@ -148,31 +154,7 @@ Tone.js (synthesizers) https://tonejs.github.io/
         </SmallCanvas>
         <CodeTitle>webmidi.js</CodeTitle>
         <CodeSnippet>
-          <CodeText>{webMidiJsCodeBlock}</CodeText>
-        </CodeSnippet>
-        <SmallCanvas>
-          <SynthBox
-            noteEvent={props.noteEvent}
-            activationNotes={["C", "D", "F", "G", "B", "E", "F"]}
-            notes={["A4", "C5", "D3", "E4", "G4", "A3", "C4", "D5", "E4", "G4"]}
-            position={[-1.5, -0.5, 3]}
-          />
-        </SmallCanvas>
-        <CodeTitle>midiwriter.js</CodeTitle>
-        <CodeSnippet>
-          <CodeText>{writingMidiFileCodeBlock}</CodeText>
-        </CodeSnippet>
-        <SmallCanvas>
-          <SynthBox
-            noteEvent={props.noteEvent}
-            activationNotes={["C", "D", "F", "G", "B", "E", "F"]}
-            notes={["A4", "C5", "D3", "E4", "G4", "A3", "C4", "D5", "E4", "G4"]}
-            position={[2, -0.5, 3]}
-          />
-        </SmallCanvas>
-        <CodeTitle>midiplayer.js</CodeTitle>
-        <CodeSnippet>
-          <CodeText>{midiOutputCodeBlock}</CodeText>
+          {webMidiJsCodeBlock}
         </CodeSnippet>
         <SmallCanvas>
           <SynthBox
@@ -182,41 +164,55 @@ Tone.js (synthesizers) https://tonejs.github.io/
             position={[0, -0.5, 3]}
           />
         </SmallCanvas>
-        <div
-          style={{
-            whiteSpace: "pre",
-            textAlign: "left",
-            padding: "50px"
-          }}
-        >
+        <CodeTitle>midiwriter.js</CodeTitle>
+        <CodeSnippet>
+          {writingMidiFileCodeBlock}
+        </CodeSnippet>
+        <SmallCanvas>
+          <SynthBox
+            noteEvent={props.noteEvent}
+            activationNotes={["C", "D", "F", "G", "B", "E", "F"]}
+            notes={["A4", "C5", "D3", "E4", "G4", "A3", "C4", "D5", "E4", "G4"]}
+            position={[0, -0.5, 3]}
+          />
+        </SmallCanvas>
+        <CodeTitle>midiplayer.js</CodeTitle>
+        <CodeSnippet>
+          {midiOutputCodeBlock}
+        </CodeSnippet>
+        <SmallCanvas>
+          <SynthBox
+            noteEvent={props.noteEvent}
+            activationNotes={["C", "D", "F", "G", "B", "E", "F"]}
+            notes={["A4", "C5", "D3", "E4", "G4", "A3", "C4", "D5", "E4", "G4"]}
+            position={[0, -0.5, 3]}
+          />
+        </SmallCanvas>
+        <CodeSnippet>
           {citations}
+          </CodeSnippet>
         </div>
       </div>
-    </div>
   );
 };
 
-const CodeSnippet = styled.div`
+const CodeSnippet = styled.p`
   background-color: #000000;
   border-radius: 10px;
-  white-space: pre;
   text-align: left;
-  padding-left: 50px;
-  padding-right: 50px;
-  padding-bottom: 50px;
-  margin-top: 30px;
-  width: 800px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 20px;
+  margin-top: 20px;
+  white-space: pre;
+  font-size: 16px;
+  word-wrap: break-word;
 `;
 
-const CodeText = styled.text`
-  color: #ffffff;
-  white-space: pre;
-  text-align: left;
-`;
 
-const CodeTitle = styled.text`
+const CodeTitle = styled.p`
   color: #ffffff;
-  font-size: 40pt;
+  font-size: 24pt;
   text-align: left;
   user-select: none;
 `;
