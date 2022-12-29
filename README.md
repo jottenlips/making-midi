@@ -4,6 +4,10 @@ https://jottenlips.github.io/making-midi/#/
 
 https://www.meetup.com/Nashville-Music-Programmers/events/268800386/
 
+🚧 Chrome is the only browser I can gurantee that supports Web MIDI
+
+Web MIDI is not supported on Safari or Firefox for android: https://developer.mozilla.org/en-US/docs/Web/API/Web_MIDI_API
+
 ## App 1
 
 - Jazz chart MIDI player and chord chart to MIDI downloader
