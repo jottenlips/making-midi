@@ -36,7 +36,7 @@ const Fakebook = props => {
   const [bass, setBass] = useState(false);
   const [file, setFile] = useState();
 
-  const [instrument, setInstrument] = useState("marimba");
+  const [instrument, setInstrument] = useState("electric_grand_piano");
 
   return (
     <div

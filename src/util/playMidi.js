@@ -14,7 +14,7 @@ export const playMidi = async(dataUri, instrument) => {
                 const time = ac.currentTime;
                 console.log(event);
                 event.name === "Note on" ?
-                    instrument.play(event.noteName, time, { gain: event.velocity / 4 }) :
+                    instrument.play(event.noteName, time, { gain: 0.8 }) :
                     console.log(event);
             });
             Player.loadDataUri(dataUri);
