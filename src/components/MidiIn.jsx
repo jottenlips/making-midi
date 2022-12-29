@@ -7,8 +7,12 @@ export const MidiIn = props => {
     <div style={{
       display: 'flex',
       flexDirection: 'column',
-      width: "100%", paddingTop: 90, alignItems: "center"
+      width: "100%",
+      paddingTop: 90,
+      alignItems: "center"
     }}>
+      {props.midiIns && props.midiIns.length === 0 && <p>Please plugin a midi controller</p>}
+
       <div style={{ justifyContent: "space-between" }}>
         <select>
           {props.midiIns &&

@@ -41,7 +41,8 @@ const MidiOut = props => {
         paddingTop: 90,
         alignItems: "center"
         }}
-      >
+    >
+      {props.midiOuts && props.midiOuts.length === 0 && <p>Please plugin a midi output</p>}
         <select>
           {props.midiOuts &&
             props.midiOuts.map(output => (
