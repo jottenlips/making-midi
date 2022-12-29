@@ -24,7 +24,7 @@ const MidiOut = props => {
   const [loop, setLoop] = useState(1);
   const [bass, setBass] = useState(false);
 
-  const [noteBoxes, setNoteBoxes] = useState([
+  const [noteBoxes, ] = useState([
     ["A4", "C4", "D4", "E4", "G4"],
     ["G4", "A4", "B4", "Db4", "Eb4", "F4"],
     ["A5", "Db5", "Eb5", "E5", "G2"],

@@ -4,7 +4,7 @@ import { withSynth } from "./withSynth";
 import { compose, length } from "ramda";
 
 export const withWebMidi = Cmp => props => {
-  const [noteEvent, setNoteEvent] = useState();
+  const [noteEvent, ] = useState();
   const [midiOutId, setMidiOutId] = useState();
   const [midiOut, setMidiOut] = useState();
   const [midiIn, setMidiIn] = useState();
